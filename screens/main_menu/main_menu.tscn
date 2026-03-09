@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0co2xblng1yq"]
+
+[ext_resource type="Script" uid="uid://6rqlx4i8qt0s" path="res://screens/main_menu/buttons/StartButton.cs" id="1_5k2jx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_csm0v"]
+font_size = 48
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "What if pong was good"
+label_settings = SubResource("LabelSettings_csm0v")
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="CenterContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"
+script = ExtResource("1_5k2jx")
