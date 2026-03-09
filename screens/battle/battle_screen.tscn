@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=7 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="2_ujstw"]
@@ -10,6 +10,12 @@ region = Rect2(224, 224, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujstw"]
 atlas = ExtResource("2_ujstw")
 region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujstw"]
+size = Vector2(1443.5, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2k4b"]
+size = Vector2(35, 508)
 
 [node name="BattleScreen" type="Node2D"]
 
@@ -77,3 +83,27 @@ stretch_mode = 4
 custom_minimum_size = Vector2(0, 700)
 layout_mode = 2
 texture = ExtResource("1_q6q2c")
+
+[node name="Top" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(-20, -29)
+shape = SubResource("RectangleShape2D_ujstw")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(-20, 483)
+shape = SubResource("RectangleShape2D_ujstw")
+
+[node name="Right" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(722, 229)
+shape = SubResource("RectangleShape2D_x2k4b")
+
+[node name="Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(-755, 229)
+shape = SubResource("RectangleShape2D_x2k4b")
