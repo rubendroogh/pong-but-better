@@ -8,7 +8,6 @@ public partial class Projectile : RigidBody2D
 
     public override void _Ready()
     {
-        GD.Print("starting velocity: " + StartingVelocity);
         Start();
     }
 
