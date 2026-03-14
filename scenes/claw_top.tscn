@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d4dr2vhk2ibj"]
+[gd_scene load_steps=14 format=3 uid="uid://d4dr2vhk2ibj"]
 
 [ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/game_objects/crab/Claw.cs" id="1_u0718"]
 [ext_resource type="Texture2D" uid="uid://b1xp16h0hafs3" path="res://sprites/crab/claw-closed.png" id="2_psfm8"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://djssg8agjea8j" path="res://sprites/crab/attack/claw-attack1.png" id="4_5ynvx"]
 [ext_resource type="Texture2D" uid="uid://cjktqluqhftrq" path="res://sprites/crab/attack/claw-attack2.png" id="5_vcm2b"]
 [ext_resource type="Texture2D" uid="uid://brh3u6uqvjgr5" path="res://sprites/crab/attack/claw-attack3.png" id="6_lkdmc"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/battle/hitboxes/EnemyHitBox.cs" id="7_kon0s"]
 
 [sub_resource type="Animation" id="Animation_kthq6"]
 length = 0.001
@@ -20,6 +21,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_psfm8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameObject/CollisionClosed:process_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObject/CollisionOpen:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_nggjs"]
@@ -55,6 +80,30 @@ tracks/1/keys = {
 "args": [],
 "method": &"ShootProjectile"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameObject/CollisionClosed:process_mode")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameObject/CollisionOpen:process_mode")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 4]
 }
 
 [sub_resource type="Animation" id="Animation_nahbd"]
@@ -99,6 +148,9 @@ _data = {
 &"circle-loop-flipped": SubResource("Animation_u0718")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifn3j"]
+size = Vector2(14.9516, 48.0323)
+
 [node name="Claw" type="Node2D"]
 script = ExtResource("1_u0718")
 
@@ -113,7 +165,7 @@ libraries = {
 }
 
 [node name="GameObject" type="Node2D" parent="."]
-position = Vector2(-128.012, 13.9754)
+position = Vector2(3.04838, -4.06451)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameObject"]
 scale = Vector2(6, 6)
@@ -121,3 +173,22 @@ texture = ExtResource("2_psfm8")
 flip_v = true
 
 [node name="ProjectileSpawnPoint" type="Node2D" parent="GameObject"]
+position = Vector2(-16.0484, 0.0645099)
+
+[node name="CollisionClosed" type="StaticBody2D" parent="GameObject"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameObject/CollisionClosed"]
+polygon = PackedVector2Array(-98.0484, 17.0645, -83.0484, 43.0645, -59.0484, 58.0645, -34.0484, 63.0645, -0.0483799, 63.0645, 25.9516, 53.0645, 51.9516, 38.0645, 60.9516, 23.0645, 68.9516, 11.0645, 82.9516, 24.0645, 94.9516, 33.0645, 97.9516, -47.9355, 64.9516, -21.9355, 53.9516, -42.9355, 25.9516, -55.9355, -8.04838, -65.9355, -42.0484, -66.9355, -76.0484, -54.9355, -96.0484, -31.9355, -101.048, -0.93549)
+
+[node name="CollisionOpen" type="StaticBody2D" parent="GameObject"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameObject/CollisionOpen"]
+polygon = PackedVector2Array(-82.0484, -32.9355, -53.0484, -49.9355, -9.04838, -40.9355, 6.95162, -33.9355, 6.95162, 27.0645, -31.0484, 44.0645, -73.0484, 48.0645, -68.0484, 58.0645, -41.0484, 68.0645, 7.95162, 67.0645, 41.9516, 49.0645, 67.9516, 20.0645, 82.9516, 21.0645, 96.9516, 32.0645, 96.9516, -50.9355, 65.9516, -26.9355, 55.9516, -45.9355, 31.9516, -66.9355, 8.95162, -78.9355, -18.0484, -85.9355, -49.0484, -86.9355, -76.0484, -75.9355, -91.0484, -56.9355, -94.0484, -40.9355)
+
+[node name="Hitbox" type="StaticBody2D" parent="GameObject"]
+position = Vector2(-3.04838, -6.93549)
+script = ExtResource("7_kon0s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameObject/Hitbox"]
+position = Vector2(19.9516, 5.04838)
+shape = SubResource("RectangleShape2D_ifn3j")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=23 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/controllers/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
@@ -10,7 +10,8 @@
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/crab_head.tscn" id="7_kthq6"]
-[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw.tscn" id="8_nahbd"]
+[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw_top.tscn" id="8_nahbd"]
+[ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/claw_bottom.tscn" id="9_20ixr"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nahbd"]
@@ -188,9 +189,8 @@ flip_h = true
 position = Vector2(787, 104)
 ProjectileScene = ExtResource("3_x2k4b")
 
-[node name="ClawBottom" parent="Battlefield" instance=ExtResource("8_nahbd")]
-position = Vector2(788, 309)
-Flipped = true
+[node name="ClawBottom" parent="Battlefield" instance=ExtResource("9_20ixr")]
+position = Vector2(776, 345)
 ProjectileScene = ExtResource("3_x2k4b")
 
 [node name="CrabHead" parent="Battlefield" instance=ExtResource("7_kthq6")]

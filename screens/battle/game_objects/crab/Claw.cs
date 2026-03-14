@@ -7,7 +7,7 @@ public partial class Claw : Node
     private int AttackInterval = 10; // Attack interval in seconds
 
     [Export]
-    private bool Flipped = false;
+    private bool FlippedCirclePath = false;
 
     [Export]
     private PackedScene ProjectileScene { get; set; }
@@ -20,7 +20,7 @@ public partial class Claw : Node
 
     private Node2D ProjectileSpawnPoint => FindChild("ProjectileSpawnPoint") as Node2D;
 
-    private string CircleLoopAnimationName => Flipped ? "circle-loop-flipped" : "circle-loop";
+    private string CircleLoopAnimationName => FlippedCirclePath ? "circle-loop-flipped" : "circle-loop";
 
     // Reference to the Callable to properly disconnect it later
     private Callable _attackFinishedCallable;
@@ -28,7 +28,6 @@ public partial class Claw : Node
     public override void _Ready()
     {
         _attackFinishedCallable = Callable.From<string>(OnAttackFinished);
-        Sprite.FlipV = !Flipped;
         CallDeferred(nameof(ConnectSignals));
 
         // Start the loop
