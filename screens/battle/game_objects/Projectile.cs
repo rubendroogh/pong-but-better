@@ -1,19 +1,13 @@
 using Godot;
-using System;
 
 public partial class Projectile : RigidBody2D
 {
     [Export]
     private Vector2 StartingVelocity = new Vector2(500, 0);
 
-    public override void _Ready()
+    public void Start(Vector2 velocity = default)
     {
-        Start();
-    }
-
-    private void Start()
-    {
-        LinearVelocity = StartingVelocity;
+        LinearVelocity = velocity != default ? velocity : StartingVelocity;
     }
 
     public override void _PhysicsProcess(double delta)

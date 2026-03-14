@@ -9,11 +9,16 @@ public partial class Claw : Node
     [Export]
     private bool Flipped = false;
 
+    [Export]
+    private PackedScene ProjectileScene { get; set; }
+
     private Sprite2D Sprite => FindChild("Sprite2D") as Sprite2D;
 
     private AnimationPlayer MovementPlayer => GetNode<AnimationPlayer>("MovementPlayer");
 
     private AnimationPlayer AttackPlayer => GetNode<AnimationPlayer>("AttackPlayer");
+
+    private Node2D ProjectileSpawnPoint => FindChild("ProjectileSpawnPoint") as Node2D;
 
     private string CircleLoopAnimationName => Flipped ? "circle-loop-flipped" : "circle-loop";
 
@@ -67,5 +72,13 @@ public partial class Claw : Node
     {
         MovementPlayer.Play(CircleLoopAnimationName); // Resume the movement
         IdleAndScheduleNextAttack();
+    }
+
+    private void ShootProjectile()
+    {
+        var projectileInstance = ProjectileScene.Instantiate<Projectile>();
+        projectileInstance.Start(new Vector2(-500, 0)); // Shoot left if flipped, right otherwise
+        ProjectileSpawnPoint.AddChild(projectileInstance);
+        projectileInstance.Position = Vector2.Zero; // Spawn at the spawn point's position
     }
 }

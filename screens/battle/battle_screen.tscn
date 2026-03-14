@@ -227,7 +227,9 @@ flip_h = true
 
 [node name="ClawTop" parent="Battlefield" instance=ExtResource("8_nahbd")]
 position = Vector2(787, 104)
+ProjectileScene = ExtResource("3_x2k4b")
 
 [node name="ClawBottom" parent="Battlefield" instance=ExtResource("8_nahbd")]
 position = Vector2(788, 309)
 Flipped = true
+ProjectileScene = ExtResource("3_x2k4b")
