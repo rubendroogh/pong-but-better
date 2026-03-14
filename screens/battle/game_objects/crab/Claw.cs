@@ -28,24 +28,16 @@ public partial class Claw : Node
     public override void _Ready()
     {
         _attackFinishedCallable = Callable.From<string>(OnAttackFinished);
-        Start();
-    }
-
-    private void Start()
-    {
-        if (Flipped)
-        {
-            Sprite.FlipV = false;
-        }
+        Sprite.FlipV = !Flipped;
 
         // Start the loop
         MovementPlayer.Play(CircleLoopAnimationName);
         
         // Schedule the first attack
-        IdleAndScheduleNextAttack();
+        ScheduleNextAttack();
     }
 
-    private void IdleAndScheduleNextAttack()
+    private void ScheduleNextAttack()
     {
         var randomOffset = new Random().Next(-2, 3); // Random offset between -2 and +2 seconds
         var nextAttackTime = AttackInterval + randomOffset;
@@ -71,7 +63,7 @@ public partial class Claw : Node
     private void OnAttackFinished(string name)
     {
         MovementPlayer.Play(CircleLoopAnimationName); // Resume the movement
-        IdleAndScheduleNextAttack();
+        ScheduleNextAttack();
     }
 
     private void ShootProjectile()

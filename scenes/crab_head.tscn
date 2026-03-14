@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://dn2g7aqy8uksn"]
+
+[ext_resource type="Texture2D" uid="uid://bsxn468d051k2" path="res://sprites/crab-head.png" id="1_7u8jn"]
+[ext_resource type="Script" uid="uid://bk71srtwv3pq7" path="res://screens/battle/game_objects/crab/CrabHead.cs" id="1_gmvqj"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/battle/game_objects/EnemyHitBox.cs" id="3_ie5qr"]
+
+[sub_resource type="Animation" id="Animation_7u8jn"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kthq6"]
+resource_name = "slide-to-right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.466517, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(50, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nggjs"]
+resource_name = "slide-to-left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.466517),
+"update": 0,
+"values": [Vector2(50, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nggjs"]
+_data = {
+&"RESET": SubResource("Animation_7u8jn"),
+&"slide-to-left": SubResource("Animation_nggjs"),
+&"slide-to-right": SubResource("Animation_kthq6")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmvqj"]
+radius = 16.1245
+
+[node name="CrabHead" type="Node2D"]
+script = ExtResource("1_gmvqj")
+
+[node name="MovementPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nggjs")
+}
+
+[node name="GameObject" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GameObject"]
+rotation = -1.5708
+scale = Vector2(9.06843, 9.06843)
+texture = ExtResource("1_7u8jn")
+
+[node name="Critboxes" type="StaticBody2D" parent="GameObject"]
+script = ExtResource("3_ie5qr")
+IsCritical = true
+
+[node name="EyeCrit1" type="CollisionShape2D" parent="GameObject/Critboxes"]
+position = Vector2(-20, -40)
+shape = SubResource("CircleShape2D_gmvqj")
+
+[node name="EyeCrit2" type="CollisionShape2D" parent="GameObject/Critboxes"]
+position = Vector2(-20, 40)
+shape = SubResource("CircleShape2D_gmvqj")
+
+[node name="Hitboxes" type="StaticBody2D" parent="GameObject"]
+script = ExtResource("3_ie5qr")
+IsCritical = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameObject/Hitboxes"]
+position = Vector2(38, -124)
+polygon = PackedVector2Array(-17, 13, -30, 70, -33, 95, -34, 155, -30, 194, -20, 229, 33, 286, 35, -40)

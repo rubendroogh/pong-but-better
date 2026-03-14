@@ -5,6 +5,8 @@ public partial class Projectile : RigidBody2D
     [Export]
     private Vector2 StartingVelocity = new Vector2(500, 0);
 
+    private const int DEFAULT_DAMAGE = 10;
+
     public void Start(Vector2 velocity = default)
     {
         LinearVelocity = velocity != default ? velocity : StartingVelocity;
@@ -19,20 +21,14 @@ public partial class Projectile : RigidBody2D
         }
 
         var collider = collisionInfo.GetCollider() as PhysicsBody2D;
-
-        if (collider.CollisionLayer == 1 << 0) // Bounce (default) layer
+        if (collider is EnemyHitBox enemyHitbox)
         {
-            LinearVelocity = LinearVelocity.Bounce(collisionInfo.GetNormal());
-        }
-        else if (IsLayerSet(collider.CollisionLayer, 8)) // Player hit layer
-        {
-            GD.Print("Player hit!");
+            enemyHitbox.ApplyHit(DEFAULT_DAMAGE);
             QueueFree();
+            return;
         }
-        else
-        {
-            GD.Print("Unknown collision with layer: " + collider.CollisionLayer);
-        }
+
+        LinearVelocity = LinearVelocity.Bounce(collisionInfo.GetNormal());
     }
 
     // TODO: Move this to a utility class if we need it elsewhere

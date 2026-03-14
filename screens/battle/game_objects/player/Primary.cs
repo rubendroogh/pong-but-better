@@ -23,6 +23,7 @@ public partial class Primary : CharacterBody2D
             var projectile = ProjectileScene.Instantiate<Projectile>();
             projectile.Position = ProjectileSpawnPoint.GlobalPosition;
             GetParent().AddChild(projectile);
+            projectile.Start();
         }
     }
 }
