@@ -20,6 +20,12 @@ public partial class Projectile : RigidBody2D
             return;
         }
 
+        // If the projectile is going too slow, it despawns
+        if (LinearVelocity.Length() < 250)
+        {
+            QueueFree();
+        }
+
         var collider = collisionInfo.GetCollider() as PhysicsBody2D;
         if (collider is HitBox enemyHitbox)
         {
