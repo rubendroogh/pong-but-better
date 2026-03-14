@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=3 uid="uid://d4dr2vhk2ibj"]
+
+[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/game_objects/crab/Claw.cs" id="1_u0718"]
+[ext_resource type="Texture2D" uid="uid://b1xp16h0hafs3" path="res://sprites/crab/claw-closed.png" id="2_psfm8"]
+[ext_resource type="Texture2D" uid="uid://dd7mtnnegrbtq" path="res://sprites/crab/claw-open.png" id="3_7jixr"]
+[ext_resource type="Texture2D" uid="uid://djssg8agjea8j" path="res://sprites/crab/attack/claw-attack1.png" id="4_5ynvx"]
+[ext_resource type="Texture2D" uid="uid://cjktqluqhftrq" path="res://sprites/crab/attack/claw-attack2.png" id="5_vcm2b"]
+[ext_resource type="Texture2D" uid="uid://brh3u6uqvjgr5" path="res://sprites/crab/attack/claw-attack3.png" id="6_lkdmc"]
+
+[sub_resource type="Animation" id="Animation_kthq6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_psfm8")]
+}
+
+[sub_resource type="Animation" id="Animation_nggjs"]
+resource_name = "attack"
+length = 2.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.866667, 1.13333, 2.03333, 2.26667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_psfm8"), ExtResource("3_7jixr"), ExtResource("4_5ynvx"), ExtResource("5_vcm2b"), ExtResource("6_lkdmc"), ExtResource("5_vcm2b"), ExtResource("4_5ynvx"), ExtResource("2_psfm8")]
+}
+
+[sub_resource type="Animation" id="Animation_nahbd"]
+resource_name = "circle-loop"
+length = 13.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.633332, 3.8, 7.53333, 11.1667),
+"transitions": PackedFloat32Array(1, 0.615572, 0.366021, 0.594604),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-120, -30), Vector2(-150, 30), Vector2(30, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_u0718"]
+resource_name = "circle-loop-flipped"
+length = 13.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.633332, 3.8, 7.5, 11.1667),
+"transitions": PackedFloat32Array(1, 0.615572, 0.366021, 0.594604),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-120, 30), Vector2(-150, -30), Vector2(30, -40)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nggjs"]
+_data = {
+&"RESET": SubResource("Animation_kthq6"),
+&"attack": SubResource("Animation_nggjs"),
+&"circle-loop": SubResource("Animation_nahbd"),
+&"circle-loop-flipped": SubResource("Animation_u0718")
+}
+
+[node name="Claw" type="Node2D"]
+script = ExtResource("1_u0718")
+
+[node name="MovementPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nggjs")
+}
+
+[node name="AttackPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nggjs")
+}
+
+[node name="GameObject" type="Node2D" parent="."]
+position = Vector2(-128.012, 13.9754)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameObject"]
+scale = Vector2(6, 6)
+texture = ExtResource("2_psfm8")
+flip_v = true

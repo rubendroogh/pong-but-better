@@ -3,16 +3,19 @@ using Godot;
 
 public partial class Claw : Node
 {
-    // Loop: do a circle, shoot once every x seconds (+/- random number)
-
     [Export]
     private int AttackInterval = 10; // Attack interval in seconds
 
-    private Sprite2D Sprite => GetNode<Sprite2D>("Sprite2D");
+    [Export]
+    private bool Flipped = false;
+
+    private Sprite2D Sprite => FindChild("Sprite2D") as Sprite2D;
 
     private AnimationPlayer MovementPlayer => GetNode<AnimationPlayer>("MovementPlayer");
 
     private AnimationPlayer AttackPlayer => GetNode<AnimationPlayer>("AttackPlayer");
+
+    private string CircleLoopAnimationName => Flipped ? "circle-loop-flipped" : "circle-loop";
 
     // Reference to the Callable to properly disconnect it later
     private Callable _attackFinishedCallable;
@@ -25,8 +28,13 @@ public partial class Claw : Node
 
     private void Start()
     {
+        if (Flipped)
+        {
+            Sprite.FlipV = false;
+        }
+
         // Start the loop
-        MovementPlayer.Play("circle-loop");
+        MovementPlayer.Play(CircleLoopAnimationName);
         
         // Schedule the first attack
         IdleAndScheduleNextAttack();
@@ -57,7 +65,7 @@ public partial class Claw : Node
 
     private void OnAttackFinished(string name)
     {
-        MovementPlayer.Play("circle-loop"); // Resume the movement
+        MovementPlayer.Play(CircleLoopAnimationName); // Resume the movement
         IdleAndScheduleNextAttack();
     }
 }

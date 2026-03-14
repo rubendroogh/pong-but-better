@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=18 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="2_ujstw"]
@@ -7,12 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/projectile.tscn" id="3_x2k4b"]
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
-[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/game_objects/crab/Claw.cs" id="6_jv58y"]
-[ext_resource type="Texture2D" uid="uid://b1xp16h0hafs3" path="res://sprites/crab/claw-closed.png" id="6_q7si8"]
-[ext_resource type="Texture2D" uid="uid://dd7mtnnegrbtq" path="res://sprites/crab/claw-open.png" id="8_nahbd"]
-[ext_resource type="Texture2D" uid="uid://djssg8agjea8j" path="res://sprites/crab/attack/claw-attack1.png" id="9_mcklo"]
-[ext_resource type="Texture2D" uid="uid://cjktqluqhftrq" path="res://sprites/crab/attack/claw-attack2.png" id="9_nggjs"]
-[ext_resource type="Texture2D" uid="uid://brh3u6uqvjgr5" path="res://sprites/crab/attack/claw-attack3.png" id="10_mcklo"]
+[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw.tscn" id="8_nahbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2k4b"]
 atlas = ExtResource("2_ujstw")
@@ -43,61 +38,6 @@ size = Vector2(20, 129)
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0rrk"]
 atlas = ExtResource("2_ujstw")
 region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="Animation" id="Animation_nahbd"]
-resource_name = "circle-loop"
-length = 13.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameObject:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.633332, 3.8, 7.53333, 11.1667),
-"transitions": PackedFloat32Array(1, 0.615572, 0.366021, 0.594604),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-120, -30), Vector2(-150, 30), Vector2(30, 40)]
-}
-
-[sub_resource type="Animation" id="Animation_kthq6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameObject/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_q7si8")]
-}
-
-[sub_resource type="Animation" id="Animation_nggjs"]
-resource_name = "attack"
-length = 2.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameObject/Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.866667, 1.13333, 2.03333, 2.26667, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("6_q7si8"), ExtResource("8_nahbd"), ExtResource("9_mcklo"), ExtResource("9_nggjs"), ExtResource("10_mcklo"), ExtResource("9_nggjs"), ExtResource("9_mcklo"), ExtResource("6_q7si8")]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nggjs"]
-_data = {
-&"RESET": SubResource("Animation_kthq6"),
-&"attack": SubResource("Animation_nggjs"),
-&"circle-loop": SubResource("Animation_nahbd")
-}
 
 [node name="BattleScreen" type="Node2D"]
 
@@ -248,24 +188,9 @@ scale = Vector2(0.560005, 4.68)
 texture = SubResource("AtlasTexture_a0rrk")
 flip_h = true
 
-[node name="ClawTop" type="Node2D" parent="Battlefield"]
+[node name="ClawTop" parent="Battlefield" instance=ExtResource("8_nahbd")]
 position = Vector2(787, 104)
-script = ExtResource("6_jv58y")
 
-[node name="MovementPlayer" type="AnimationPlayer" parent="Battlefield/ClawTop"]
-libraries = {
-&"": SubResource("AnimationLibrary_nggjs")
-}
-
-[node name="AttackPlayer" type="AnimationPlayer" parent="Battlefield/ClawTop"]
-libraries = {
-&"": SubResource("AnimationLibrary_nggjs")
-}
-
-[node name="GameObject" type="Node2D" parent="Battlefield/ClawTop"]
-position = Vector2(4.87764, 6.50352)
-
-[node name="Sprite2D" type="Sprite2D" parent="Battlefield/ClawTop/GameObject"]
-scale = Vector2(6, 6)
-texture = ExtResource("6_q7si8")
-flip_v = true
+[node name="ClawBottom" parent="Battlefield" instance=ExtResource("8_nahbd")]
+position = Vector2(788, 309)
+Flipped = true
