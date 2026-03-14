@@ -41,7 +41,6 @@ public partial class CrabHead : Node2D
 
     private void HandleCriticalHit()
     {
-        GD.Print("Crab head hit by critical hit!");
         DoHide();
     }
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=22 format=3 uid="uid://blpmgo67ohhhj"]
 
-[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/game_objects/BattleController.cs" id="1_nggjs"]
+[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/controllers/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
-[ext_resource type="Script" uid="uid://d3jqfofir28h2" path="res://screens/battle/game_objects/EnemyController.cs" id="2_mcklo"]
+[ext_resource type="Script" uid="uid://d3jqfofir28h2" path="res://screens/battle/controllers/EnemyController.cs" id="2_mcklo"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="2_ujstw"]
 [ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="3_20ixr"]
 [ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="3_edhdw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/crab_head.tscn" id="7_kthq6"]
 [ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw.tscn" id="8_nahbd"]
+[ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nahbd"]
 atlas = ExtResource("2_ujstw")
@@ -198,6 +199,7 @@ position = Vector2(890, 213)
 [node name="Left" type="StaticBody2D" parent="Battlefield"]
 position = Vector2(-945, 223)
 collision_layer = 129
+script = ExtResource("10_edhdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Left"]
 position = Vector2(1.25, -8.75)

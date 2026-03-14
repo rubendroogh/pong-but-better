@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class EnemyHitBox : StaticBody2D
+public partial class EnemyHitBox : HitBox
 {
 	[Export]
 	public bool IsCritical { get; set; }
@@ -8,7 +8,7 @@ public partial class EnemyHitBox : StaticBody2D
 	[Export]
 	public Node DamageReceiver { get; set; } // If unset: use the EnemyController
 
-	public void ApplyHit(int damage)
+	public override void ApplyHit(int damage)
 	{
 		GD.Print("Hit!");
 

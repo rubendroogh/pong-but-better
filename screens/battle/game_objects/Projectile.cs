@@ -21,7 +21,7 @@ public partial class Projectile : RigidBody2D
         }
 
         var collider = collisionInfo.GetCollider() as PhysicsBody2D;
-        if (collider is EnemyHitBox enemyHitbox)
+        if (collider is HitBox enemyHitbox)
         {
             enemyHitbox.ApplyHit(DEFAULT_DAMAGE);
             QueueFree();
@@ -29,11 +29,5 @@ public partial class Projectile : RigidBody2D
         }
 
         LinearVelocity = LinearVelocity.Bounce(collisionInfo.GetNormal());
-    }
-
-    // TODO: Move this to a utility class if we need it elsewhere
-    private static bool IsLayerSet(uint layer, int layerNumber)
-    {
-        return (layer & (1u << (layerNumber - 1))) != 0;
     }
 }

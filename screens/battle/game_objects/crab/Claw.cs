@@ -29,12 +29,31 @@ public partial class Claw : Node
     {
         _attackFinishedCallable = Callable.From<string>(OnAttackFinished);
         Sprite.FlipV = !Flipped;
+        CallDeferred(nameof(ConnectSignals));
 
         // Start the loop
         MovementPlayer.Play(CircleLoopAnimationName);
         
         // Schedule the first attack
         ScheduleNextAttack();
+    }
+
+    private void ConnectSignals()
+    {
+        var enemyController = BattleController.Instance?.EnemyController;
+        if (enemyController == null)
+        {
+            GD.Print("EnemyController is null");
+            return;
+        }
+
+        enemyController.CriticalHit += HandleCriticalHit;
+    }
+
+    private void HandleCriticalHit()
+    {
+        GD.Print("Claw: crit");
+        StartAttackMode();
     }
 
     private void ScheduleNextAttack()
