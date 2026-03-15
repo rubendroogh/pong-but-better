@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=24 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/controllers/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/projectile.tscn" id="3_x2k4b"]
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
+[ext_resource type="Script" uid="uid://dvdsotxs8xxta" path="res://screens/battle/ui/HealthBar.cs" id="5_qeodb"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/crab_head.tscn" id="7_kthq6"]
 [ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw_top.tscn" id="8_nahbd"]
 [ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/claw_bottom.tscn" id="9_20ixr"]
@@ -48,8 +49,9 @@ size = Vector2(1920, 72)
 script = ExtResource("1_nggjs")
 EnemyController = NodePath("EnemyController")
 
-[node name="EnemyController" type="Node2D" parent="."]
+[node name="EnemyController" type="Node2D" parent="." node_paths=PackedStringArray("HealthBar")]
 script = ExtResource("2_mcklo")
+HealthBar = NodePath("../Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats/ProgressBar")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -180,6 +182,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 value = 100.0
+script = ExtResource("5_qeodb")
 
 [node name="Label" type="Label" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/PlayerStats"]
 z_index = 1
@@ -199,7 +202,8 @@ size_flags_horizontal = 10
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-value = 50.0
+value = 100.0
+script = ExtResource("5_qeodb")
 
 [node name="Label" type="Label" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats"]
 z_index = 1
