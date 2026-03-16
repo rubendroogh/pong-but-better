@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://dgo8pbvd44ggs" path="res://screens/battle/controllers/PlayerController.cs" id="3_11byc"]
 [ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="3_20ixr"]
 [ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="3_edhdw"]
-[ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/projectile.tscn" id="3_x2k4b"]
+[ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/battle/projectile.tscn" id="3_x2k4b"]
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
-[ext_resource type="Script" uid="uid://dvdsotxs8xxta" path="res://screens/battle/ui/HealthBar.cs" id="5_qeodb"]
-[ext_resource type="Script" uid="uid://dym8opj7vxmsl" path="res://screens/battle/ui/PlayerHealthBar.cs" id="6_qwh68"]
-[ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/crab_head.tscn" id="7_kthq6"]
-[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/claw_top.tscn" id="8_nahbd"]
-[ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/claw_bottom.tscn" id="9_20ixr"]
+[ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="6_qwh68"]
+[ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="7_f6epl"]
+[ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/crab/crab_head.tscn" id="7_kthq6"]
+[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/crab/claw_top.tscn" id="8_nahbd"]
+[ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/crab/claw_bottom.tscn" id="9_20ixr"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nahbd"]
@@ -52,9 +52,8 @@ script = ExtResource("1_nggjs")
 EnemyController = NodePath("EnemyController")
 PlayerController = NodePath("PlayerController")
 
-[node name="EnemyController" type="Node2D" parent="." node_paths=PackedStringArray("HealthBar")]
+[node name="EnemyController" type="Node2D" parent="."]
 script = ExtResource("2_mcklo")
-HealthBar = NodePath("../Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats/ProgressBar")
 
 [node name="PlayerController" type="Node2D" parent="."]
 script = ExtResource("3_11byc")
@@ -178,47 +177,10 @@ theme_override_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayerStats" type="VBoxContainer" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/PlayerStats"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-value = 100.0
-script = ExtResource("6_qwh68")
-
-[node name="Label" type="Label" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/PlayerStats"]
-z_index = 1
-layout_mode = 2
-text = "You"
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/PlayerStats"]
-visible = false
+[node name="PlayerStats" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer" instance=ExtResource("6_qwh68")]
 layout_mode = 2
 
-[node name="EnemyStats" type="VBoxContainer" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="ProgressBar" type="ProgressBar" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats"]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-value = 100.0
-script = ExtResource("5_qeodb")
-
-[node name="Label" type="Label" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats"]
-z_index = 1
-layout_mode = 2
-text = "King of Crustaceans"
-horizontal_alignment = 2
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer/EnemyStats"]
-visible = false
+[node name="EnemyStats" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer" instance=ExtResource("7_f6epl")]
 layout_mode = 2
 
 [node name="PlayingFieldBg" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]

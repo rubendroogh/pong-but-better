@@ -24,4 +24,9 @@ public partial class PlayerController : Node, IHittable
 
         EmitSignal(SignalName.PlayerHealthChange, damage);
     }
+
+    private void Die()
+    {
+        
+    }
 }

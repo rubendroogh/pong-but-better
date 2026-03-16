@@ -36,7 +36,7 @@ public partial class CrabHead : Node2D
             return;
         }
 
-        enemyController.CriticalHit += HandleCriticalHit;
+        enemyController.EnemyCriticalHit += HandleCriticalHit;
     }
 
     private void HandleCriticalHit()

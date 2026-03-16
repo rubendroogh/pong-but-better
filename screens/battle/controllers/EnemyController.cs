@@ -6,38 +6,28 @@ public partial class EnemyController : Node, IHittable
 
     public int CurrentHealth { get; private set; } // Use SetCurrentHealth
 
-    [Export]
-    private HealthBar HealthBar { get; set; }
+    [Signal]
+    public delegate void EnemyHitEventHandler();
 
     [Signal]
-    public delegate void CriticalHitEventHandler();
+    public delegate void EnemyCriticalHitEventHandler();
 
     public override void _Ready()
     {
-        SetCurrentHealth(MaxHealth);
-        HealthBar.MaxValue = MaxHealth;
-        HealthBar.Value = CurrentHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void Hit(int damage, bool critical)
     {
-        int newHealth;
         if (critical)
         {
-            EmitSignal(nameof(CriticalHit));
-            newHealth = CurrentHealth - damage * 2;
+            CurrentHealth -= damage * 2;
+            EmitSignal(SignalName.EnemyCriticalHit);
         }
         else
         {
-            newHealth = CurrentHealth -= damage;
+            CurrentHealth -= damage;
+            EmitSignal(SignalName.EnemyHit);
         }
-
-        SetCurrentHealth(newHealth);
-    }
-
-    protected void SetCurrentHealth(int newValue)
-    {
-        CurrentHealth = newValue;
-        HealthBar.Value = CurrentHealth;
     }
 }

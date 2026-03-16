@@ -46,7 +46,7 @@ public partial class Claw : Node
             return;
         }
 
-        enemyController.CriticalHit += HandleCriticalHit;
+        enemyController.EnemyCriticalHit += HandleCriticalHit;
     }
 
     private void HandleCriticalHit()
