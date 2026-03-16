@@ -10,16 +10,13 @@ public partial class EnemyHitBox : HitBox
 
 	public override void ApplyHit(int damage)
 	{
-		GD.Print("Hit!");
-
 		if (DamageReceiver is IHittable hittable)
 		{
 			hittable.Hit(damage, IsCritical);
 		}
 		else
 		{
-			var enemyController = BattleController.Instance.EnemyController as IHittable;
-			enemyController.Hit(damage, IsCritical);
+			BattleController.Instance.EnemyController.Hit(damage, IsCritical);
 		}
 	}
 }

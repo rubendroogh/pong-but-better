@@ -5,6 +5,6 @@ public partial class HitBox : StaticBody2D
 {
     public virtual void ApplyHit(int damage)
 	{
-		GD.Print("Player hit!");
+		GD.Print("Generic thing hit!");
 	}
 }
