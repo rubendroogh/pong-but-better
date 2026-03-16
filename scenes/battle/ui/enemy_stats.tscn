@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0yuejrierdnf"]
+
+[ext_resource type="Script" uid="uid://dbpr3umaqvutc" path="res://screens/battle/ui/EnemyHealthBar.cs" id="1_nwahg"]
+
+[node name="EnemyStats" type="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+size_flags_horizontal = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+value = 100.0
+script = ExtResource("1_nwahg")
+
+[node name="Label" type="Label" parent="."]
+z_index = 1
+layout_mode = 2
+text = "King of Crustaceans"
+horizontal_alignment = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+layout_mode = 2
