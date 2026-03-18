@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=27 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/controllers/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="6_qwh68"]
 [ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="7_f6epl"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/crab/crab_head.tscn" id="7_kthq6"]
+[ext_resource type="PackedScene" uid="uid://bsvbouhlv423j" path="res://scenes/battle/ui/death_overlay.tscn" id="8_f6epl"]
 [ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/crab/claw_top.tscn" id="8_nahbd"]
 [ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/crab/claw_bottom.tscn" id="9_20ixr"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
@@ -32,7 +33,7 @@ atlas = ExtResource("2_ujstw")
 region = Rect2(64, 160, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0rrk"]
-size = Vector2(20, 129)
+size = Vector2(14, 129)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0rrk"]
 atlas = ExtResource("2_ujstw")
@@ -189,6 +190,10 @@ custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 texture = ExtResource("1_q6q2c")
 
+[node name="DeathOverlay" parent="Camera2D/UI" instance=ExtResource("8_f6epl")]
+visible = false
+layout_mode = 1
+
 [node name="Battlefield" type="Node2D" parent="."]
 
 [node name="Primary" type="CharacterBody2D" parent="Battlefield"]
@@ -209,16 +214,20 @@ position = Vector2(20, -12)
 
 [node name="Secondary" type="CharacterBody2D" parent="Battlefield"]
 position = Vector2(-618, 339)
+platform_on_leave = 2
 script = ExtResource("5_a0rrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Secondary"]
-position = Vector2(0, -4.5)
+position = Vector2(-3, -4.5)
 shape = SubResource("RectangleShape2D_a0rrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Battlefield/Secondary"]
 scale = Vector2(0.560005, 4.68)
 texture = SubResource("AtlasTexture_a0rrk")
 flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Battlefield/Secondary"]
+polygon = PackedVector2Array(4, 4, 3, 59, 13, 42, 21, 15, 22, -10, 20, -36, 12, -60, 4, -71, 3, 55)
 
 [node name="ClawTop" parent="Battlefield" instance=ExtResource("8_nahbd")]
 position = Vector2(787, 104)
