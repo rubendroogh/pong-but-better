@@ -1,12 +1,10 @@
 using Godot;
 
-public partial class PlayerController : Node, IHittable
+public partial class PlayerController : ActorController, IHittable, IActor
 {
     public static PlayerController Instance { get; private set; }
 
-    public int MaxHealth { get; set; } = 100;
-
-    public int CurrentHealth { get; set; }
+    public int ActorID { get; set; } = 0;
 
     [Signal]
     public delegate void PlayerHealthChangeEventHandler(int change);
@@ -17,7 +15,7 @@ public partial class PlayerController : Node, IHittable
     public override void _Ready()
     {
         Instance = this;
-        CurrentHealth = MaxHealth;
+        base._Ready();
     }
 
     // Critical not implemented yet (if even necessary)

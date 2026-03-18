@@ -1,10 +1,8 @@
 using Godot;
 
-public partial class EnemyController : Node, IHittable
+public partial class EnemyController : ActorController, IHittable, IActor
 {
-    public int MaxHealth = 100;
-
-    public int CurrentHealth { get; private set; } // Use SetCurrentHealth
+    public int ActorID { get; set; } = 1;
 
     [Signal]
     public delegate void EnemyHitEventHandler();
@@ -14,7 +12,7 @@ public partial class EnemyController : Node, IHittable
 
     public override void _Ready()
     {
-        CurrentHealth = MaxHealth;
+        base._Ready();
     }
 
     public void Hit(int damage, bool critical)
