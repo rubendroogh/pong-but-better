@@ -7,9 +7,6 @@ public partial class PlayerController : ActorController, IHittable, IActor
     public int ActorID { get; set; } = 0;
 
     [Signal]
-    public delegate void PlayerHealthChangeEventHandler(int change);
-
-    [Signal]
     public delegate void PlayerDeathEventHandler();
 
     public override void _Ready()
@@ -22,7 +19,7 @@ public partial class PlayerController : ActorController, IHittable, IActor
     public void Hit(int damage, bool critical)
     {
         CurrentHealth -= damage;
-        EmitSignal(SignalName.PlayerHealthChange, damage);
+        EmitSignal(SignalName.ActorHit, ActorID, damage);
 
         if (CurrentHealth <= 0)
         {

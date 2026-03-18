@@ -4,12 +4,6 @@ public partial class EnemyController : ActorController, IHittable, IActor
 {
     public int ActorID { get; set; } = 1;
 
-    [Signal]
-    public delegate void EnemyHitEventHandler();
-
-    [Signal]
-    public delegate void EnemyCriticalHitEventHandler();
-
     public override void _Ready()
     {
         base._Ready();
@@ -20,12 +14,12 @@ public partial class EnemyController : ActorController, IHittable, IActor
         if (critical)
         {
             CurrentHealth -= damage * 2;
-            EmitSignal(SignalName.EnemyCriticalHit);
+            EmitSignal(SignalName.ActorCriticalHit, ActorID, damage * 2);
         }
         else
         {
             CurrentHealth -= damage;
-            EmitSignal(SignalName.EnemyHit);
+            EmitSignal(SignalName.ActorHit, ActorID, damage);
         }
     }
 }

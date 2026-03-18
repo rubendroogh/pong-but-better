@@ -46,12 +46,11 @@ public partial class Claw : Node
             return;
         }
 
-        enemyController.EnemyCriticalHit += HandleCriticalHit;
+        enemyController.ActorCriticalHit += HandleCriticalHit;
     }
 
-    private void HandleCriticalHit()
+    private void HandleCriticalHit(int actorID, int damage)
     {
-        GD.Print("Claw: crit");
         StartAttackMode();
     }
 

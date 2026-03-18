@@ -16,11 +16,11 @@ public partial class EnemyHealthBar : HealthBar
             return;
         }
 
-        enemyController.EnemyHit += HandleEnemyHit;
-        enemyController.EnemyCriticalHit += HandleEnemyHit;
+        enemyController.ActorHit += HandleEnemyHit;
+        enemyController.ActorCriticalHit += HandleEnemyHit;
     }
 
-    private void HandleEnemyHit()
+    private void HandleEnemyHit(int actorID, int damage)
     {
         var enemyController = BattleController.Instance?.EnemyController;
         MaxValue = enemyController.MaxHealth;
