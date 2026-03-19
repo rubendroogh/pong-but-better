@@ -14,12 +14,12 @@ public partial class EnemyController : ActorController, IHittable, IActor
         if (critical)
         {
             CurrentHealth -= damage * 2;
-            EmitSignal(SignalName.ActorCriticalHit, ActorID, damage * 2);
+            EmitSignal(SignalName.ActorCriticalHit, damage * 2);
         }
         else
         {
             CurrentHealth -= damage;
-            EmitSignal(SignalName.ActorHit, ActorID, damage);
+            EmitSignal(SignalName.ActorHit, damage);
         }
     }
 }

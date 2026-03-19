@@ -19,7 +19,7 @@ public partial class PlayerController : ActorController, IHittable, IActor
     public void Hit(int damage, bool critical)
     {
         CurrentHealth -= damage;
-        EmitSignal(SignalName.ActorHit, ActorID, damage);
+        EmitSignal(SignalName.ActorHit, damage);
 
         if (CurrentHealth <= 0)
         {

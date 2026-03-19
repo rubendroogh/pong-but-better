@@ -20,7 +20,7 @@ public partial class EnemyHealthBar : HealthBar
         enemyController.ActorCriticalHit += HandleEnemyHit;
     }
 
-    private void HandleEnemyHit(int actorID, int damage)
+    private void HandleEnemyHit(int damage)
     {
         var enemyController = BattleController.Instance?.EnemyController;
         MaxValue = enemyController.MaxHealth;

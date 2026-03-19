@@ -39,7 +39,7 @@ public partial class CrabHead : Node2D
         enemyController.ActorCriticalHit += HandleCriticalHit;
     }
 
-    private void HandleCriticalHit(int actorID, int damage)
+    private void HandleCriticalHit(int damage)
     {
         DoHide();
     }
