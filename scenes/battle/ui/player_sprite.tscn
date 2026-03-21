@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://q1afkd1pn11l"]
+[gd_scene load_steps=3 format=3 uid="uid://q1afkd1pn11l"]
 
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="1_pb14x"]
-[ext_resource type="Script" uid="uid://certsl4gn6tt7" path="res://screens/battle/ui/DamageNumbers.cs" id="2_m6jeb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nahbd"]
 atlas = ExtResource("1_pb14x")
@@ -19,7 +18,3 @@ size_flags_vertical = 8
 texture = SubResource("AtlasTexture_nahbd")
 stretch_mode = 4
 flip_h = true
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(170, 16)
-script = ExtResource("2_m6jeb")

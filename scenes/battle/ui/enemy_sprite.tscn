@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwvrik8p48nbs"]
+
+[ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="1_rqqvt"]
+[ext_resource type="Script" uid="uid://certsl4gn6tt7" path="res://screens/battle/ui/actor/DamageNumbers.cs" id="2_foqyp"]
+[ext_resource type="PackedScene" uid="uid://b1gvl3w0pqui" path="res://scenes/battle/ui/transient_damage_number.tscn" id="3_1fksd"]
+[ext_resource type="PackedScene" uid="uid://w63jq01581rt" path="res://scenes/battle/ui/transient_damage_number_critical.tscn" id="4_foqyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujstw"]
+atlas = ExtResource("1_rqqvt")
+region = Rect2(32, 0, 32, 32)
+
+[node name="EnemyMarginContainer" type="MarginContainer"]
+size_flags_horizontal = 10
+size_flags_vertical = 8
+
+[node name="Enemy" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_ujstw")
+stretch_mode = 4
+
+[node name="DamageNumbers" type="Node2D" parent="."]
+position = Vector2(-57, 6)
+script = ExtResource("2_foqyp")
+DamageNumberScene = ExtResource("3_1fksd")
+DamageNumberCriticalScene = ExtResource("4_foqyp")
+
+[node name="TransientDamageNumber" parent="DamageNumbers" instance=ExtResource("3_1fksd")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 28.0
+offset_bottom = 23.0

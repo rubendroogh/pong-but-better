@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0yuejrierdnf"]
 
-[ext_resource type="Script" uid="uid://dbpr3umaqvutc" path="res://screens/battle/ui/EnemyHealthBar.cs" id="1_nwahg"]
+[ext_resource type="Script" uid="uid://dbpr3umaqvutc" path="res://screens/battle/ui/stats/EnemyHealthBar.cs" id="1_nwahg"]
 
 [node name="EnemyStats" type="VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)

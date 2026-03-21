@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://coc5ffvh7wk4n"]
 
-[ext_resource type="Script" uid="uid://dym8opj7vxmsl" path="res://screens/battle/ui/PlayerHealthBar.cs" id="1_c7afj"]
+[ext_resource type="Script" uid="uid://dym8opj7vxmsl" path="res://screens/battle/ui/stats/PlayerHealthBar.cs" id="1_c7afj"]
 
 [node name="PlayerStats" type="VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)

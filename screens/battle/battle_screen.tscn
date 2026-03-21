@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
 [ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="5_s5rr2"]
+[ext_resource type="PackedScene" uid="uid://cwvrik8p48nbs" path="res://scenes/battle/ui/enemy_sprite.tscn" id="6_gdm4l"]
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="6_qwh68"]
 [ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="7_f6epl"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/crab/crab_head.tscn" id="7_kthq6"]
@@ -18,10 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/crab/claw_top.tscn" id="8_nahbd"]
 [ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/crab/claw_bottom.tscn" id="9_20ixr"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujstw"]
-atlas = ExtResource("2_ujstw")
-region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x2k4b"]
 
@@ -100,26 +97,11 @@ theme_override_constants/margin_right = 30
 [node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayerMarginContainer2" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer" instance=ExtResource("5_s5rr2")]
+[node name="PlayerMarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer" instance=ExtResource("5_s5rr2")]
 layout_mode = 2
 
-[node name="EnemyMarginContainer" type="MarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer"]
+[node name="EnemyMarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer" instance=ExtResource("6_gdm4l")]
 layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer/EnemyMarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 8
-
-[node name="Enemy" type="TextureRect" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer/EnemyMarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(160, 160)
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 8
-texture = SubResource("AtlasTexture_ujstw")
-stretch_mode = 4
 
 [node name="HealthBarsBg" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.207843)
