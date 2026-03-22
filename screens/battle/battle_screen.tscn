@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://blpmgo67ohhhj"]
 
-[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/controllers/BattleController.cs" id="1_nggjs"]
+[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
-[ext_resource type="Script" uid="uid://d3jqfofir28h2" path="res://screens/battle/controllers/EnemyController.cs" id="2_mcklo"]
+[ext_resource type="Script" uid="uid://d3jqfofir28h2" path="res://screens/battle/actors/Enemy.cs" id="2_mcklo"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="2_ujstw"]
-[ext_resource type="Script" uid="uid://dgo8pbvd44ggs" path="res://screens/battle/controllers/PlayerController.cs" id="3_11byc"]
+[ext_resource type="Script" uid="uid://dgo8pbvd44ggs" path="res://screens/battle/actors/Player.cs" id="3_11byc"]
 [ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="3_20ixr"]
 [ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="3_edhdw"]
 [ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/battle/projectile.tscn" id="3_x2k4b"]

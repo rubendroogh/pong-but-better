@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class ActorController : Node
+public partial class Actor : Node
 {
     public int MaxHealth { get; set; } = 100;
 

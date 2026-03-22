@@ -1,6 +1,4 @@
-using Godot;
-
-public partial class EnemyController : ActorController, IHittable, IActor
+public partial class Enemy : Actor, IHittable, IActor
 {
     public int ActorID { get; set; } = 1;
 

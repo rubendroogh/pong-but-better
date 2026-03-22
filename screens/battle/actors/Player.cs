@@ -1,8 +1,8 @@
 using Godot;
 
-public partial class PlayerController : ActorController, IHittable, IActor
+public partial class Player : Actor, IHittable, IActor
 {
-    public static PlayerController Instance { get; private set; }
+    public static Player Instance { get; private set; }
 
     public int ActorID { get; set; } = 0;
 

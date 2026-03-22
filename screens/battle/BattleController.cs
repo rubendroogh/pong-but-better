@@ -3,10 +3,10 @@ using Godot;
 public partial class BattleController : Node
 {
     [Export]
-    public EnemyController EnemyController { get; private set; }
+    public Enemy EnemyController { get; private set; }
 
     [Export]
-    public PlayerController PlayerController { get; private set; }
+    public Player PlayerController { get; private set; }
 
     public static BattleController Instance { get; private set; }
 

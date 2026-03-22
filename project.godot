@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerController="*res://screens/battle/controllers/PlayerController.cs"
+PlayerController="*res://screens/battle/actors/Player.cs"
 
 [display]
 

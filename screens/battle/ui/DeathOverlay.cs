@@ -13,7 +13,7 @@ public partial class DeathOverlay : PanelContainer
 
     private void ConnectSignals()
     {
-        PlayerController.Instance.PlayerDeath += HandlePlayerDeath;
+        Player.Instance.PlayerDeath += HandlePlayerDeath;
         Button.Pressed += HandleClickRestart;
     }
     

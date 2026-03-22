@@ -43,11 +43,11 @@ public partial class DamageNumbers : Node
 		}
 	}
 
-	private ActorController GetActor()
+	private Actor GetActor()
 	{
 		if (IsPlayer)
 		{
-			return PlayerController.Instance;
+			return Player.Instance;
 		}
 		else
 		{

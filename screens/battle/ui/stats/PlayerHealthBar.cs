@@ -9,7 +9,7 @@ public partial class PlayerHealthBar : HealthBar
 
     private void ConnectSignals()
     {
-        var playerController = PlayerController.Instance;
+        var playerController = Player.Instance;
         if (playerController == null)
         {
             GD.Print("PlayerController is null");
@@ -21,7 +21,7 @@ public partial class PlayerHealthBar : HealthBar
 
     private void HandlePlayerHealthChange(int damage)
     {
-        MaxValue = PlayerController.Instance.MaxHealth;
-        Value = PlayerController.Instance.CurrentHealth;
+        MaxValue = Player.Instance.MaxHealth;
+        Value = Player.Instance.CurrentHealth;
     }
 }
