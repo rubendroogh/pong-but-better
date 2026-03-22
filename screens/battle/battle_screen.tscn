@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="4_6nejn"]
 [ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="5_a0rrk"]
 [ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="5_s5rr2"]
-[ext_resource type="PackedScene" uid="uid://cwvrik8p48nbs" path="res://scenes/battle/ui/enemy_sprite.tscn" id="6_gdm4l"]
+[ext_resource type="PackedScene" uid="uid://dnl88jx2acj4c" path="res://scenes/battle/ui/enemy_sprite.tscn" id="6_gdm4l"]
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="6_qwh68"]
 [ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="7_f6epl"]
 [ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/crab/crab_head.tscn" id="7_kthq6"]

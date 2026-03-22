@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwvrik8p48nbs"]
+[gd_scene load_steps=6 format=3 uid="uid://dnl88jx2acj4c"]
 
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="1_rqqvt"]
 [ext_resource type="Script" uid="uid://certsl4gn6tt7" path="res://screens/battle/ui/actor/DamageNumbers.cs" id="2_foqyp"]
@@ -26,9 +26,3 @@ position = Vector2(-57, 6)
 script = ExtResource("2_foqyp")
 DamageNumberScene = ExtResource("3_1fksd")
 DamageNumberCriticalScene = ExtResource("4_foqyp")
-
-[node name="TransientDamageNumber" parent="DamageNumbers" instance=ExtResource("3_1fksd")]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 28.0
-offset_bottom = 23.0

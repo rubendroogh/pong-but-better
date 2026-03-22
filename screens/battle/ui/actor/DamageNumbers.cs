@@ -12,13 +12,11 @@ public partial class DamageNumbers : Node
 	[Export]
 	private PackedScene DamageNumberCriticalScene { get; set; }
 
-	private const int MaxXSpawn = 30;
+	[Export]
+	private int Radius { get; set; } = 30;
 
-	private const int MinXSpawn = -30;
-
-	private const int MaxYSpawn = 30;
-
-	private const int MinYSpawn = -30;
+	[Export]
+	private bool IsPlayer { get; set; }
 
 	public override void _Ready()
 	{
@@ -45,17 +43,29 @@ public partial class DamageNumbers : Node
 		}
 	}
 
+	private ActorController GetActor()
+	{
+		if (IsPlayer)
+		{
+			return PlayerController.Instance;
+		}
+		else
+		{
+			return BattleController.Instance?.EnemyController;
+		}
+	}
+
 	private void ConnectSignals()
 	{
-		var enemyController = BattleController.Instance?.EnemyController;
-		if (enemyController == null)
+		var actor = GetActor();
+		if (actor == null)
 		{
-			GD.Print("EnemyController is null");
+			GD.Print("Actor is null");
 			return;
 		}
 
-		enemyController.ActorHit += HandleActorDamaged;
-		enemyController.ActorCriticalHit += HandleActorCriticalDamaged;
+		actor.ActorHit += HandleActorDamaged;
+		actor.ActorCriticalHit += HandleActorCriticalDamaged;
 	}
 
 	private void HandleActorDamaged(int damage)
@@ -76,8 +86,8 @@ public partial class DamageNumbers : Node
 
 	private Vector2 GetRandomSpawnPos()
 	{
-		var randomX = new Random().Next(MinXSpawn, MaxXSpawn);
-		var randomY = new Random().Next(MinYSpawn, MaxYSpawn);
+		var randomX = new Random().Next(-Radius, Radius);
+		var randomY = new Random().Next(-Radius, Radius);
 
 		return new Vector2(randomX, randomY);
 	}
