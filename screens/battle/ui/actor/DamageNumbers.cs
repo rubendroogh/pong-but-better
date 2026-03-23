@@ -23,24 +23,17 @@ public partial class DamageNumbers : Node
 		CallDeferred(nameof(ConnectSignals));
 	}
 
-	private async Task Test()
+	private void ConnectSignals()
 	{
-		for (int i = 0; i < 150; i++)
+		var actor = GetActor();
+		if (actor == null)
 		{
-			var randomDamage = new Random().Next(60, 110);
-			HandleActorDamaged(randomDamage);
-			await this.Delay(500);
+			GD.Print("Actor is null");
+			return;
 		}
-	}
 
-	private async Task TestCrit()
-	{
-		for (int i = 0; i < 150; i++)
-		{
-			var randomDamage = new Random().Next(260, 410);
-			HandleActorCriticalDamaged(randomDamage);
-			await this.Delay(1500);
-		}
+		actor.ActorHit += HandleActorDamaged;
+		actor.ActorCriticalHit += HandleActorCriticalDamaged;
 	}
 
 	private Actor GetActor()
@@ -53,19 +46,6 @@ public partial class DamageNumbers : Node
 		{
 			return BattleController.Instance?.EnemyController;
 		}
-	}
-
-	private void ConnectSignals()
-	{
-		var actor = GetActor();
-		if (actor == null)
-		{
-			GD.Print("Actor is null");
-			return;
-		}
-
-		actor.ActorHit += HandleActorDamaged;
-		actor.ActorCriticalHit += HandleActorCriticalDamaged;
 	}
 
 	private void HandleActorDamaged(int damage)
