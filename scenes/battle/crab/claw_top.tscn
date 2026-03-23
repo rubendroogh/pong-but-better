@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://d4dr2vhk2ibj"]
 
-[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/game_objects/crab/Claw.cs" id="1_u0718"]
+[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/actors/enemies/crab/Claw.cs" id="1_u0718"]
 [ext_resource type="Texture2D" uid="uid://b1xp16h0hafs3" path="res://sprites/crab/claw-closed.png" id="2_psfm8"]
 [ext_resource type="Texture2D" uid="uid://dd7mtnnegrbtq" path="res://sprites/crab/claw-open.png" id="3_7jixr"]
 [ext_resource type="Texture2D" uid="uid://djssg8agjea8j" path="res://sprites/crab/attack/claw-attack1.png" id="4_5ynvx"]

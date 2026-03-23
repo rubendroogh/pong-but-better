@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=29 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
-[ext_resource type="Script" uid="uid://d3jqfofir28h2" path="res://screens/battle/actors/Enemy.cs" id="2_mcklo"]
+[ext_resource type="Script" uid="uid://ch0epjc3kw8ns" path="res://screens/battle/actors/enemies/crab/Crab.cs" id="2_k0a72"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="2_ujstw"]
 [ext_resource type="Script" uid="uid://dgo8pbvd44ggs" path="res://screens/battle/actors/Player.cs" id="3_11byc"]
 [ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="3_20ixr"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/crab/claw_top.tscn" id="8_nahbd"]
 [ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/crab/claw_bottom.tscn" id="9_20ixr"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
+[ext_resource type="Texture2D" uid="uid://bk88fydjx18y3" path="res://sprites/shield.png" id="14_sr0bw"]
+[ext_resource type="PackedScene" uid="uid://c3lct85iikme1" path="res://scenes/battle/crab/crab_shield.tscn" id="18_k0a72"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/battle/hitboxes/EnemyHitBox.cs" id="20_ud3bp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x2k4b"]
 
@@ -27,11 +30,7 @@ atlas = ExtResource("2_ujstw")
 region = Rect2(64, 160, 32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0rrk"]
-size = Vector2(14, 129)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0rrk"]
-atlas = ExtResource("2_ujstw")
-region = Rect2(32, 32, 32, 32)
+size = Vector2(17, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x2k4b"]
 size = Vector2(32.5, 560.5)
@@ -48,7 +47,7 @@ EnemyController = NodePath("EnemyController")
 PlayerController = NodePath("PlayerController")
 
 [node name="EnemyController" type="Node2D" parent="."]
-script = ExtResource("2_mcklo")
+script = ExtResource("2_k0a72")
 
 [node name="PlayerController" type="Node2D" parent="."]
 script = ExtResource("3_11byc")
@@ -165,16 +164,16 @@ platform_on_leave = 2
 script = ExtResource("5_a0rrk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Secondary"]
-position = Vector2(-3, -4.5)
+position = Vector2(-1.5, 0)
 shape = SubResource("RectangleShape2D_a0rrk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Battlefield/Secondary"]
-scale = Vector2(0.560005, 4.68)
-texture = SubResource("AtlasTexture_a0rrk")
-flip_h = true
+texture = ExtResource("14_sr0bw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Battlefield/Secondary"]
-polygon = PackedVector2Array(4, 4, 3, 59, 13, 42, 21, 15, 22, -10, 20, -36, 12, -60, 4, -71, 3, 55)
+position = Vector2(3, 11.4427)
+scale = Vector2(1, 0.994792)
+polygon = PackedVector2Array(4, 4, 4, 49, 6, 28, 7, 8, 7, -31, 6, -50, 4, -71.8167)
 
 [node name="ClawTop" parent="Battlefield" instance=ExtResource("8_nahbd")]
 position = Vector2(787, 104)
@@ -186,6 +185,11 @@ ProjectileScene = ExtResource("3_x2k4b")
 
 [node name="CrabHead" parent="Battlefield" instance=ExtResource("7_kthq6")]
 position = Vector2(890, 213)
+
+[node name="CrabShield" parent="Battlefield" instance=ExtResource("18_k0a72")]
+process_mode = 4
+visible = false
+position = Vector2(922, 202)
 
 [node name="Left" type="StaticBody2D" parent="Battlefield"]
 position = Vector2(-945, 223)
@@ -202,8 +206,10 @@ scale = Vector2(4.36666, 33.2812)
 texture = ExtResource("3_edhdw")
 flip_h = true
 
-[node name="Right" type="StaticBody2D" parent="Battlefield"]
+[node name="Right" type="StaticBody2D" parent="Battlefield" node_paths=PackedStringArray("DamageReceiver")]
 position = Vector2(936, 223)
+script = ExtResource("20_ud3bp")
+DamageReceiver = NodePath("../../EnemyController")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Right"]
 position = Vector2(1.25, -8.75)

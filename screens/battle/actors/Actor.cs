@@ -2,6 +2,7 @@ using Godot;
 
 public partial class Actor : Node
 {
+    [Export]
     public int MaxHealth { get; set; } = 100;
 
     public int CurrentHealth { get; set; }

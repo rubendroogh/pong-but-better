@@ -11,13 +11,23 @@ public partial class Enemy : Actor, IHittable, IActor
     {
         if (critical)
         {
-            CurrentHealth -= damage * 2;
-            EmitSignal(SignalName.ActorCriticalHit, damage * 2);
+            OnCriticalHit(damage);
         }
         else
         {
-            CurrentHealth -= damage;
-            EmitSignal(SignalName.ActorHit, damage);
+            OnHit(damage);
         }
+    }
+
+    protected virtual void OnCriticalHit(int damage)
+    {
+        CurrentHealth -= damage * 2;
+        EmitSignal(SignalName.ActorCriticalHit, damage * 2);
+    }
+
+    protected virtual void OnHit(int damage)
+    {
+        CurrentHealth -= damage;
+        EmitSignal(SignalName.ActorHit, damage);
     }
 }
