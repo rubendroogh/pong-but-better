@@ -33,7 +33,21 @@ public partial class Projectile : CharacterBody2D
             QueueFree();
             return;
         }
+        else if (collider is Projectile otherProjectile)
+        {
+            SpawnPuff();
+            otherProjectile.QueueFree();
+            QueueFree();
+        }
 
         Velocity = Velocity.Bounce(collisionInfo.GetNormal());
+    }
+
+    // Spawns a puff of smoke
+    private void SpawnPuff()
+    {
+        var puff = CommonScenes.Instance.Puff.Instantiate<Node2D>();
+        puff.Position = Position;
+        AddSibling(puff);
     }
 }

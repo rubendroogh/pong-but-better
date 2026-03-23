@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ekjextripows"]
+
+[ext_resource type="Script" uid="uid://dbp8gs40go230" path="res://scenes/CommonScenes.cs" id="1_laasl"]
+[ext_resource type="PackedScene" uid="uid://cv2vclsm2bwll" path="res://scenes/battle/game_object/puff.tscn" id="2_vu3d7"]
+
+[node name="CommonScenes" type="Node"]
+script = ExtResource("1_laasl")
+Puff = ExtResource("2_vu3d7")
