@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsmqbgrtljds"]
+
+[ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="1_1jqva"]
+[ext_resource type="Texture2D" uid="uid://bk88fydjx18y3" path="res://sprites/shield.png" id="2_xtast"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0rrk"]
+size = Vector2(17, 120)
+
+[node name="Secondary" type="CharacterBody2D"]
+platform_on_leave = 2
+script = ExtResource("1_1jqva")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_a0rrk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xtast")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(3, 11.4427)
+scale = Vector2(1, 0.994792)
+polygon = PackedVector2Array(4, 4, 4, 49, 6, 28, 7, 8, 7, -31, 6, -50, 4, -71.8167)
