@@ -2,6 +2,8 @@ public partial class Enemy : Actor, IHittable, IActor
 {
     public int ActorID { get; set; } = 1;
 
+    protected virtual float CritMultiplier { get; set; } = 2f;
+
     public override void _Ready()
     {
         base._Ready();
@@ -19,15 +21,15 @@ public partial class Enemy : Actor, IHittable, IActor
         }
     }
 
-    protected virtual void OnCriticalHit(int damage)
+    protected virtual void OnCriticalHit(float damage)
     {
-        CurrentHealth -= damage * 2;
-        EmitSignal(SignalName.ActorCriticalHit, damage * 2);
+        CurrentHealth -= (int)(damage * CritMultiplier);
+        EmitSignal(SignalName.ActorCriticalHit, damage * CritMultiplier);
     }
 
-    protected virtual void OnHit(int damage)
+    protected virtual void OnHit(float damage)
     {
-        CurrentHealth -= damage;
+        CurrentHealth -= (int)damage;
         EmitSignal(SignalName.ActorHit, damage);
     }
 }

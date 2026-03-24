@@ -19,7 +19,7 @@ public partial class PlayerHealthBar : HealthBar
         playerController.ActorHit += HandlePlayerHealthChange;
     }
 
-    private void HandlePlayerHealthChange(int damage)
+    private void HandlePlayerHealthChange(float damage)
     {
         MaxValue = Player.Instance.MaxHealth;
         Value = Player.Instance.CurrentHealth;

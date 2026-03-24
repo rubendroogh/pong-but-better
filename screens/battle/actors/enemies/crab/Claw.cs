@@ -49,7 +49,7 @@ public partial class Claw : Node
         enemyController.ActorCriticalHit += HandleCriticalHit;
     }
 
-    private void HandleCriticalHit(int damage)
+    private void HandleCriticalHit(float damage)
     {
         StartAttackMode();
     }

@@ -8,10 +8,10 @@ public partial class Actor : Node
     public int CurrentHealth { get; set; }
 
     [Signal]
-    public delegate void ActorHitEventHandler(int damage);
+    public delegate void ActorHitEventHandler(float damage);
 
     [Signal]
-    public delegate void ActorCriticalHitEventHandler(int damage);
+    public delegate void ActorCriticalHitEventHandler(float damage);
 
     public override void _Ready()
     {

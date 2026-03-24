@@ -38,7 +38,7 @@ public partial class ActorSprite : Control
 		}
 	}
 
-	private void HandleActorDamaged(int damage)
+	private void HandleActorDamaged(float damage)
 	{
 		AnimationPlayer.Play("tilt");
 	}

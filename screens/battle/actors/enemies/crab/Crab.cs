@@ -22,7 +22,7 @@ public partial class Crab : Enemy
     public override void _Ready()
     {
         base._Ready();
-        
+
         _doHideCallable = Callable.From(DoHide);
         _doPeekCallable = Callable.From(DoPeek);
 
@@ -30,7 +30,7 @@ public partial class Crab : Enemy
         ScheduleNextHide();
     }
 
-    protected override void OnCriticalHit(int damage)
+    protected override void OnCriticalHit(float damage)
     {
         EmitSignal(SignalName.CrabStartHide);
         base.OnCriticalHit(damage);

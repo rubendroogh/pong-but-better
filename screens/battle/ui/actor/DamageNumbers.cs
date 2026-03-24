@@ -48,7 +48,7 @@ public partial class DamageNumbers : Node
 		}
 	}
 
-	private void HandleActorDamaged(int damage)
+	private void HandleActorDamaged(float damage)
 	{
 		var numberInstance = DamageNumberScene.Instantiate<TransientDamageNumber>();
 		numberInstance.Position = GetRandomSpawnPos();
@@ -56,7 +56,7 @@ public partial class DamageNumbers : Node
 		AddChild(numberInstance);
 	}
 
-	private void HandleActorCriticalDamaged(int damage)
+	private void HandleActorCriticalDamaged(float damage)
 	{
 		var numberInstance = DamageNumberCriticalScene.Instantiate<TransientDamageNumber>();
 		numberInstance.Position = GetRandomSpawnPos();
