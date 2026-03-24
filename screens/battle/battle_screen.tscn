@@ -176,20 +176,18 @@ scale = Vector2(1, 0.994792)
 polygon = PackedVector2Array(4, 4, 4, 49, 6, 28, 7, 8, 7, -31, 6, -50, 4, -71.8167)
 
 [node name="ClawTop" parent="Battlefield" instance=ExtResource("8_nahbd")]
-position = Vector2(787, 104)
+position = Vector2(723, 104)
 ProjectileScene = ExtResource("3_x2k4b")
 
 [node name="ClawBottom" parent="Battlefield" instance=ExtResource("9_20ixr")]
-position = Vector2(776, 345)
+position = Vector2(712, 345)
 ProjectileScene = ExtResource("3_x2k4b")
 
 [node name="CrabHead" parent="Battlefield" instance=ExtResource("7_kthq6")]
 position = Vector2(890, 213)
 
 [node name="CrabShield" parent="Battlefield" instance=ExtResource("18_k0a72")]
-process_mode = 4
-visible = false
-position = Vector2(922, 202)
+position = Vector2(921, 202)
 
 [node name="Left" type="StaticBody2D" parent="Battlefield"]
 position = Vector2(-945, 223)
