@@ -1,15 +1,14 @@
-public partial class Enemy : Actor, IHittable, IActor
+public partial class Enemy : Actor
 {
-    public int ActorID { get; set; } = 1;
-
     protected virtual float CritMultiplier { get; set; } = 2f;
 
     public override void _Ready()
     {
+        ActorID = 1;
         base._Ready();
     }
 
-    public void Hit(int damage, bool critical)
+    public override void Hit(int damage, bool critical)
     {
         if (critical)
         {
