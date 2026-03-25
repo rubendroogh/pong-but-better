@@ -1,19 +1,33 @@
 using Godot;
 
+/// <summary>
+/// ActorOwned nodes are nodes that are connected to a specific actor.
+/// They are destroyed when the actor dies.
+/// </summary>
 public partial class ActorOwned : Node
 {
-    // Connect signals to get destroyed when its owner gets destroyed
     public Actor OwnerActor { get; set; }
 
     public override void _Ready()
     {
-        // Get ancestor actor
         OwnerActor = GetParent<Actor>();
         if (Owner == null)
         {
             GD.PrintErr("OwnerActor is null!");
         }
 
+        CallDeferred(nameof(ConnectOnDeathSignals));
+
         base._Ready();
+    }
+
+    private void ConnectOnDeathSignals()
+    {
+        OwnerActor.ActorDeath += OnDeath;
+    }
+
+    protected virtual void OnDeath()
+    {
+        QueueFree();
     }
 }
