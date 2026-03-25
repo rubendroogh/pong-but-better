@@ -1,7 +1,7 @@
 using System;
 using Godot;
 
-public partial class Claw : Node
+public partial class Claw : ActorOwned
 {
     [Export]
     private int AttackInterval = 10; // Attack interval in seconds
@@ -27,6 +27,7 @@ public partial class Claw : Node
 
     public override void _Ready()
     {
+        base._Ready();
         _attackFinishedCallable = Callable.From<string>(OnAttackFinished);
         CallDeferred(nameof(ConnectSignals));
 
@@ -39,14 +40,7 @@ public partial class Claw : Node
 
     private void ConnectSignals()
     {
-        var enemyController = BattleController.Instance?.EnemyController;
-        if (enemyController == null)
-        {
-            GD.Print("EnemyController is null");
-            return;
-        }
-
-        enemyController.ActorCriticalHit += HandleCriticalHit;
+        OwnerActor.ActorCriticalHit += HandleCriticalHit;
     }
 
     private void HandleCriticalHit(float damage)

@@ -6,7 +6,7 @@ public partial class EnemyHitBox : HitBox
 	public bool IsCritical { get; set; }
 
 	[Export]
-	public Node DamageReceiver { get; set; } // If unset: use the EnemyController
+	public Actor DamageReceiver { get; set; } // If unset: use the EnemyController
 
 	public override void ApplyHit(int damage)
 	{

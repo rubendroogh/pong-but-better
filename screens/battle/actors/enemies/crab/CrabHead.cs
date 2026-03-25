@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class CrabHead : Node2D
+public partial class CrabHead : ActorOwned
 {
     private AnimationPlayer MovementPlayer => GetNode<AnimationPlayer>("MovementPlayer");
 
@@ -8,18 +8,14 @@ public partial class CrabHead : Node2D
 
     public override void _Ready()
     {
+        base._Ready();
         // Connect to the critical hit signal from the EnemyController
         CallDeferred(nameof(ConnectSignals));
     }
 
     private void ConnectSignals()
     {
-        var crabController = BattleController.Instance?.EnemyController as Crab;
-        if (crabController == null)
-        {
-            GD.Print("EnemyController is null");
-            return;
-        }
+        var crabController = OwnerActor as Crab;
 
         crabController.CrabStartHide += HandleCrabHide;
         crabController.CrabStartPeek += HandleCrabPeek;
