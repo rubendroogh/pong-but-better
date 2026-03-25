@@ -13,6 +13,9 @@ public partial class Actor : Node
     [Signal]
     public delegate void ActorCriticalHitEventHandler(float damage);
 
+    [Signal]
+    public delegate void ActorDeathEventHandler();
+
     public override void _Ready()
     {
         CurrentHealth = MaxHealth;

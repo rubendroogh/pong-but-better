@@ -25,11 +25,26 @@ public partial class Enemy : Actor, IHittable, IActor
     {
         CurrentHealth -= (int)(damage * CritMultiplier);
         EmitSignal(SignalName.ActorCriticalHit, damage * CritMultiplier);
+
+        if (CurrentHealth <= 0)
+        {
+            OnDeath();
+        }
     }
 
     protected virtual void OnHit(float damage)
     {
         CurrentHealth -= (int)damage;
         EmitSignal(SignalName.ActorHit, damage);
+
+        if (CurrentHealth <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+    protected virtual void OnDeath()
+    {
+        EmitSignal(SignalName.ActorDeath);
     }
 }
