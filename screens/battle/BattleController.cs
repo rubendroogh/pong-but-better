@@ -2,17 +2,10 @@ using Godot;
 
 public partial class BattleController : Node
 {
-    [Export]
     public Enemy EnemyController { get; private set; }
 
     [Export]
-    public Player PlayerController { get; private set; }
-
-    [Export]
     private ResourcePreloader CommonEnemyPreloader { get; set; }
-
-    [Export]
-    private Node BattlefieldNode { get; set; }
 
     public static BattleController Instance { get; private set; }
 
@@ -34,7 +27,7 @@ public partial class BattleController : Node
 
         var enemyScene = CommonEnemyPreloader.GetResource(enemySceneResource) as PackedScene;
         var enemy = enemyScene.Instantiate<Enemy>();
-        BattlefieldNode.AddChild(enemy);
+        AddChild(enemy);
 
         EnemyController = enemy;
     }
