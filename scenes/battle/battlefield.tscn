@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dh8ocfmg7elyp"]
+
+[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/dungeon/battle/BattleController.cs" id="1_c8ews"]
+[ext_resource type="PackedScene" uid="uid://dsmqbgrtljds" path="res://scenes/battle/actors/player/secondary.tscn" id="2_3cmhl"]
+[ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/dungeon/battle/hitboxes/PlayerHitBox.cs" id="3_14yoq"]
+[ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="4_ynl3h"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/dungeon/battle/hitboxes/EnemyHitBox.cs" id="5_3cmhl"]
+[ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="5_wt2cq"]
+[ext_resource type="PackedScene" uid="uid://bddrkn3h8q0vm" path="res://scenes/battle/actors/enemies/crab_full.tscn" id="6_3o6bd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2k4b"]
+size = Vector2(32.5, 781)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujstw"]
+size = Vector2(2559, 89)
+
+[node name="Battlefield" type="Node2D" node_paths=PackedStringArray("CommonEnemyPreloader")]
+script = ExtResource("1_c8ews")
+CommonEnemyPreloader = NodePath("CommonEnemyPreloader")
+
+[node name="Secondary" parent="." instance=ExtResource("2_3cmhl")]
+position = Vector2(-1000, 193)
+
+[node name="Left" type="StaticBody2D" parent="."]
+position = Vector2(-1265, 223)
+collision_layer = 129
+script = ExtResource("3_14yoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(1.25, 3.5)
+shape = SubResource("RectangleShape2D_x2k4b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Left"]
+position = Vector2(18.25, 5.25)
+scale = Vector2(4.36666, 49.0312)
+texture = ExtResource("4_ynl3h")
+flip_h = true
+
+[node name="Right" type="StaticBody2D" parent="."]
+position = Vector2(1236, 223)
+collision_layer = 129
+script = ExtResource("5_3cmhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(27, 3.5)
+shape = SubResource("RectangleShape2D_x2k4b")
+
+[node name="Sprite2D" type="Sprite2D" parent="Right"]
+position = Vector2(11, 5.25)
+scale = Vector2(4.36666, 49.0312)
+texture = ExtResource("4_ynl3h")
+
+[node name="Top" type="StaticBody2D" parent="."]
+position = Vector2(0, -214)
+
+[node name="Sprite2D" type="Sprite2D" parent="Top"]
+scale = Vector2(160, 6.5625)
+texture = ExtResource("5_wt2cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_ujstw")
+
+[node name="Bottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 667)
+
+[node name="Sprite2D" type="Sprite2D" parent="Bottom"]
+position = Vector2(0, -14.75)
+scale = Vector2(160, 4.71875)
+texture = ExtResource("5_wt2cq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_ujstw")
+
+[node name="CommonEnemyPreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("crab_full"), [ExtResource("6_3o6bd")]]

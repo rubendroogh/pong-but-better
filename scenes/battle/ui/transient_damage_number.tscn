@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1gvl3w0pqui"]
 
-[ext_resource type="Script" uid="uid://d1hb8mw8h3ygx" path="res://screens/battle/ui/actor/TransientDamageNumber.cs" id="1_c7tsd"]
+[ext_resource type="Script" uid="uid://d1hb8mw8h3ygx" path="res://screens/dungeon/battle/ui/actor/TransientDamageNumber.cs" id="1_c7tsd"]
 
 [sub_resource type="Animation" id="Animation_wwlg6"]
 length = 0.001

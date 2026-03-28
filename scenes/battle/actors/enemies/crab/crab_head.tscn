@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dn2g7aqy8uksn"]
 
 [ext_resource type="Texture2D" uid="uid://bsxn468d051k2" path="res://sprites/crab-head.png" id="1_7u8jn"]
-[ext_resource type="Script" uid="uid://bk71srtwv3pq7" path="res://screens/battle/actors/enemies/crab/CrabHead.cs" id="1_gmvqj"]
-[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/battle/hitboxes/EnemyHitBox.cs" id="3_ie5qr"]
+[ext_resource type="Script" uid="uid://bk71srtwv3pq7" path="res://screens/dungeon/battle/actors/enemies/crab/CrabHead.cs" id="1_gmvqj"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/dungeon/battle/hitboxes/EnemyHitBox.cs" id="3_ie5qr"]
 
 [sub_resource type="Animation" id="Animation_7u8jn"]
 tracks/0/type = "value"

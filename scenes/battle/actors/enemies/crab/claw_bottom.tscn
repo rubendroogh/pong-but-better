@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://c1lcfm73pyyfe"]
 
-[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/battle/actors/enemies/crab/Claw.cs" id="1_p3agc"]
+[ext_resource type="Script" uid="uid://dyhon4j0uvk8n" path="res://screens/dungeon/battle/actors/enemies/crab/Claw.cs" id="1_p3agc"]
 [ext_resource type="Texture2D" uid="uid://b1xp16h0hafs3" path="res://sprites/crab/claw-closed.png" id="2_l7hrw"]
 [ext_resource type="Texture2D" uid="uid://dd7mtnnegrbtq" path="res://sprites/crab/claw-open.png" id="3_ke4yc"]
 [ext_resource type="Texture2D" uid="uid://djssg8agjea8j" path="res://sprites/crab/attack/claw-attack1.png" id="4_jlfoj"]
 [ext_resource type="Texture2D" uid="uid://cjktqluqhftrq" path="res://sprites/crab/attack/claw-attack2.png" id="5_hfpgp"]
 [ext_resource type="Texture2D" uid="uid://brh3u6uqvjgr5" path="res://sprites/crab/attack/claw-attack3.png" id="6_cudlr"]
-[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/battle/hitboxes/EnemyHitBox.cs" id="7_l7hrw"]
+[ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/dungeon/battle/hitboxes/EnemyHitBox.cs" id="7_l7hrw"]
 
 [sub_resource type="Animation" id="Animation_kthq6"]
 length = 0.001

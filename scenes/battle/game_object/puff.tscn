@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cv2vclsm2bwll"]
 
-[ext_resource type="Script" uid="uid://cqvrrgy7mn7ko" path="res://screens/battle/game_objects/OneShotAnimation.cs" id="1_3mmsb"]
+[ext_resource type="Script" uid="uid://cqvrrgy7mn7ko" path="res://screens/dungeon/battle/game_objects/OneShotAnimation.cs" id="1_3mmsb"]
 [ext_resource type="Texture2D" uid="uid://bcua25xwruuc2" path="res://sprites/puff.png" id="2_p5ll4"]
 
 [sub_resource type="Animation" id="Animation_6dpg2"]

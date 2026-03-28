@@ -1,24 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=9 format=3 uid="uid://blpmgo67ohhhj"]
 
-[ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/battle/BattleController.cs" id="1_nggjs"]
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_q6q2c"]
-[ext_resource type="Texture2D" uid="uid://bwpces1jkou3m" path="res://sprites/box.png" id="3_20ixr"]
-[ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="3_edhdw"]
 [ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="5_s5rr2"]
 [ext_resource type="Texture2D" uid="uid://c2pveg7gj1rrf" path="res://sprites/wall-dark.png" id="6_20ixr"]
 [ext_resource type="PackedScene" uid="uid://dnl88jx2acj4c" path="res://scenes/battle/ui/enemy_sprite.tscn" id="6_gdm4l"]
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="6_qwh68"]
 [ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="7_f6epl"]
+[ext_resource type="PackedScene" uid="uid://dh8ocfmg7elyp" path="res://scenes/battle/battlefield.tscn" id="8_68tsc"]
 [ext_resource type="PackedScene" uid="uid://bsvbouhlv423j" path="res://scenes/battle/ui/death_overlay.tscn" id="8_f6epl"]
-[ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/battle/hitboxes/PlayerHitBox.cs" id="10_edhdw"]
-[ext_resource type="PackedScene" uid="uid://bddrkn3h8q0vm" path="res://scenes/battle/actors/enemies/crab_full.tscn" id="10_qeodb"]
-[ext_resource type="PackedScene" uid="uid://dsmqbgrtljds" path="res://scenes/battle/actors/player/secondary.tscn" id="11_ud3bp"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2k4b"]
-size = Vector2(32.5, 781)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ujstw"]
-size = Vector2(2559, 89)
 
 [node name="DungeonScreen" type="Node2D"]
 
@@ -114,65 +103,5 @@ stretch_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Battlefield" type="Node2D" parent="." node_paths=PackedStringArray("CommonEnemyPreloader")]
+[node name="Battlefield" parent="." instance=ExtResource("8_68tsc")]
 position = Vector2(0, 34)
-script = ExtResource("1_nggjs")
-CommonEnemyPreloader = NodePath("CommonEnemyPreloader")
-
-[node name="Secondary" parent="Battlefield" instance=ExtResource("11_ud3bp")]
-position = Vector2(-1000, 193)
-
-[node name="Left" type="StaticBody2D" parent="Battlefield"]
-position = Vector2(-1265, 223)
-collision_layer = 129
-script = ExtResource("10_edhdw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Left"]
-position = Vector2(1.25, 3.5)
-shape = SubResource("RectangleShape2D_x2k4b")
-
-[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Left"]
-position = Vector2(18.25, 5.25)
-scale = Vector2(4.36666, 49.0312)
-texture = ExtResource("3_edhdw")
-flip_h = true
-
-[node name="Right" type="StaticBody2D" parent="Battlefield"]
-position = Vector2(1236, 223)
-collision_layer = 129
-script = ExtResource("10_edhdw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Right"]
-position = Vector2(27, 3.5)
-shape = SubResource("RectangleShape2D_x2k4b")
-
-[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Right"]
-position = Vector2(11, 5.25)
-scale = Vector2(4.36666, 49.0312)
-texture = ExtResource("3_edhdw")
-
-[node name="Top" type="StaticBody2D" parent="Battlefield"]
-position = Vector2(0, -214)
-
-[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Top"]
-scale = Vector2(160, 6.5625)
-texture = ExtResource("3_20ixr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Top"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_ujstw")
-
-[node name="Bottom" type="StaticBody2D" parent="Battlefield"]
-position = Vector2(0, 667)
-
-[node name="Sprite2D" type="Sprite2D" parent="Battlefield/Bottom"]
-position = Vector2(0, -14.75)
-scale = Vector2(160, 4.71875)
-texture = ExtResource("3_20ixr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Battlefield/Bottom"]
-position = Vector2(0, -15)
-shape = SubResource("RectangleShape2D_ujstw")
-
-[node name="CommonEnemyPreloader" type="ResourcePreloader" parent="Battlefield"]
-resources = [PackedStringArray("crab_full"), [ExtResource("10_qeodb")]]

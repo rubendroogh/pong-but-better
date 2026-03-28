@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dnl88jx2acj4c"]
 
-[ext_resource type="Script" uid="uid://7y11sj4iv2hu" path="res://screens/battle/ui/actor/ActorSprite.cs" id="1_1fksd"]
+[ext_resource type="Script" uid="uid://7y11sj4iv2hu" path="res://screens/dungeon/battle/ui/actor/ActorSprite.cs" id="1_1fksd"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="1_rqqvt"]
-[ext_resource type="Script" uid="uid://certsl4gn6tt7" path="res://screens/battle/ui/actor/DamageNumbers.cs" id="2_foqyp"]
+[ext_resource type="Script" uid="uid://certsl4gn6tt7" path="res://screens/dungeon/battle/ui/actor/DamageNumbers.cs" id="2_foqyp"]
 [ext_resource type="PackedScene" uid="uid://b1gvl3w0pqui" path="res://scenes/battle/ui/transient_damage_number.tscn" id="3_1fksd"]
 [ext_resource type="PackedScene" uid="uid://w63jq01581rt" path="res://scenes/battle/ui/transient_damage_number_critical.tscn" id="4_foqyp"]
 

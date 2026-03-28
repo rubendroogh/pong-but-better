@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsvbouhlv423j"]
 
-[ext_resource type="Script" uid="uid://crx3b7w3ljogt" path="res://screens/battle/ui/DeathOverlay.cs" id="1_ilucx"]
+[ext_resource type="Script" uid="uid://crx3b7w3ljogt" path="res://screens/dungeon/battle/ui/DeathOverlay.cs" id="1_ilucx"]
 
 [node name="DeathOverlay" type="PanelContainer" node_paths=PackedStringArray("Button")]
 z_index = 2

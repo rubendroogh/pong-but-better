@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3lct85iikme1"]
 
 [ext_resource type="Texture2D" uid="uid://dohjnnf5ptneh" path="res://sprites/crab-shield.png" id="1_faihf"]
-[ext_resource type="Script" uid="uid://35ofhkqf0mqd" path="res://screens/battle/actors/enemies/crab/CrabShield.cs" id="1_qfwfv"]
+[ext_resource type="Script" uid="uid://35ofhkqf0mqd" path="res://screens/dungeon/battle/actors/enemies/crab/CrabShield.cs" id="1_qfwfv"]
 
 [sub_resource type="Animation" id="Animation_qfwfv"]
 length = 0.001

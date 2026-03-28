@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsmqbgrtljds"]
 
-[ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/battle/game_objects/player/Secondary.cs" id="1_1jqva"]
+[ext_resource type="Script" uid="uid://br0tvb1un0c5m" path="res://screens/dungeon/battle/game_objects/player/Secondary.cs" id="1_1jqva"]
 [ext_resource type="Texture2D" uid="uid://bk88fydjx18y3" path="res://sprites/shield.png" id="2_xtast"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0rrk"]

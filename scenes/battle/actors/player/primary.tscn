@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ihqut3770m8b"]
 
-[ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/battle/game_objects/player/Primary.cs" id="1_xwles"]
+[ext_resource type="Script" uid="uid://drbfde5fbvrt0" path="res://screens/dungeon/battle/game_objects/player/Primary.cs" id="1_xwles"]
 [ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/battle/projectile.tscn" id="2_46vda"]
 [ext_resource type="Texture2D" uid="uid://ddblgj20xt55t" path="res://sprites/atlas/CreaturesTileMap.png" id="3_3orfu"]
 
