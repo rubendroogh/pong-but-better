@@ -11,15 +11,41 @@
 script = ExtResource("1_v15q2")
 
 [node name="ClawTop" parent="." instance=ExtResource("2_r1smk")]
-position = Vector2(723, 104)
+position = Vector2(861, 75)
 ProjectileScene = ExtResource("3_y11o2")
+
+[node name="GameObject" parent="ClawTop" index="2"]
+scale = Vector2(1.3, 1.3)
 
 [node name="ClawBottom" parent="." instance=ExtResource("4_ayq6q")]
-position = Vector2(712, 345)
+position = Vector2(835, 358)
 ProjectileScene = ExtResource("3_y11o2")
 
+[node name="GameObject" parent="ClawBottom" index="2"]
+scale = Vector2(1.3, 1.3)
+
 [node name="CrabHead" parent="." instance=ExtResource("5_nywnr")]
-position = Vector2(890, 213)
+position = Vector2(1178, 221)
+
+[node name="Sprite2D" parent="CrabHead/GameObject" index="0"]
+scale = Vector2(12.068, 12.068)
+
+[node name="EyeCrit1" parent="CrabHead/GameObject/Critboxes" index="0"]
+position = Vector2(-28, -53)
+
+[node name="EyeCrit2" parent="CrabHead/GameObject/Critboxes" index="1"]
+position = Vector2(-28, 55)
+
+[node name="CollisionPolygon2D" parent="CrabHead/GameObject/Hitboxes" index="0"]
+polygon = PackedVector2Array(7, -58, -16, -7, -32, 53, -32, 195, -21, 248, 1, 292, 44, 339, 41, -92)
 
 [node name="CrabShield" parent="." instance=ExtResource("6_bk6ou")]
-position = Vector2(921, 202)
+position = Vector2(1220, 221)
+
+[node name="GameObject" parent="CrabShield" index="1"]
+position = Vector2(80, 0)
+
+[editable path="ClawTop"]
+[editable path="ClawBottom"]
+[editable path="CrabHead"]
+[editable path="CrabShield"]

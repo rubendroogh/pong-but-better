@@ -3,21 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dohjnnf5ptneh" path="res://sprites/crab-shield.png" id="1_faihf"]
 [ext_resource type="Script" uid="uid://35ofhkqf0mqd" path="res://screens/battle/actors/enemies/crab/CrabShield.cs" id="1_qfwfv"]
 
-[sub_resource type="Animation" id="Animation_faihf"]
-resource_name = "slide-to-right"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameObject:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.0915054, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(80, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_qfwfv"]
 length = 0.001
 tracks/0/type = "value"
@@ -48,6 +33,21 @@ tracks/0/keys = {
 "values": [Vector2(80, 0), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_faihf"]
+resource_name = "slide-to-right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameObject:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.0915054, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(80, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qfwfv"]
 _data = {
 &"RESET": SubResource("Animation_qfwfv"),
@@ -65,13 +65,12 @@ libraries = {
 }
 
 [node name="GameObject" type="Node2D" parent="."]
-position = Vector2(80, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="GameObject"]
-scale = Vector2(4.2, 4.2)
+scale = Vector2(6.05, 6.05)
 texture = ExtResource("1_faihf")
 
 [node name="BlockBoxes" type="StaticBody2D" parent="GameObject"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameObject/BlockBoxes"]
-polygon = PackedVector2Array(-9, -267, -39, -50, -40, 50, -9, 271, 45, 273, 43, -272)
+polygon = PackedVector2Array(-16, -387, -58, -71, -58, 71, -16, 385, 64, 390, 59, -391)
