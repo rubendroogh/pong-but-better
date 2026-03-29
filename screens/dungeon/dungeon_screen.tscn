@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=10 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_6npk3"]
+[ext_resource type="Script" uid="uid://cf1sw1bcoh5q3" path="res://screens/dungeon/battle/ui/stats/PlayerMoney.cs" id="1_uib46"]
 [ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="2_uib46"]
 [ext_resource type="PackedScene" uid="uid://dnl88jx2acj4c" path="res://scenes/battle/ui/enemy_sprite.tscn" id="3_esxr1"]
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="4_yk1v0"]
@@ -57,9 +58,10 @@ layout_mode = 2
 
 [node name="MoneyLabel" type="Label" parent="Camera2D/UI/VBoxContainer/TextureRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
-text = "Money: 0"
+text = "Money: 999"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("1_uib46")
 
 [node name="Dungeon" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.337255)
