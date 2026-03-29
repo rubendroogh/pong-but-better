@@ -24,6 +24,7 @@ public partial class ActorSprite : Control
 
 		actor.ActorHit += HandleActorDamaged;
 		actor.ActorCriticalHit += HandleActorDamaged;
+		actor.ActorDeath += HandleActorDeath;
 	}
 
 	private Actor GetActor()
@@ -41,5 +42,10 @@ public partial class ActorSprite : Control
 	private void HandleActorDamaged(float damage)
 	{
 		AnimationPlayer.Play("tilt");
+	}
+
+	private void HandleActorDeath()
+	{
+		Hide();
 	}
 }

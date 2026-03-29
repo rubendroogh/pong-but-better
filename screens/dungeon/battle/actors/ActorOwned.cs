@@ -1,7 +1,7 @@
 using Godot;
 
 /// <summary>
-/// ActorOwned nodes are nodes that are connected to a specific actor.
+/// ActorOwned nodes are nodes on the battlefield that are connected to a specific actor.
 /// They are destroyed when the actor dies.
 /// </summary>
 public partial class ActorOwned : Node

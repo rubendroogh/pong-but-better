@@ -1,12 +1,25 @@
 using Godot;
-using System;
 
 public partial class DungeonController : Node
 {
-    public bool DungeonIsActive = true;
+    public static DungeonController Instance { get; set; }
 
-    public void Poep()
+    public override void _Ready()
     {
-        
+        Instance = this;
+    }
+
+    // Starts a new dungeon run
+    public void StartRun()
+    {
+        // Go to scene
+        GetTree().ChangeSceneToFile("res://screens/dungeon/dungeon_screen.tscn");
+    }
+
+    // Ends the current dungeon run
+    public void EndRun()
+    {
+        // Reset player
+        // Go to the main menu
     }
 }

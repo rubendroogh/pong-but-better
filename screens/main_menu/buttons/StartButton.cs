@@ -9,6 +9,6 @@ public partial class StartButton : Button
 
     private void StartButton_Pressed()
     {
-        GetTree().ChangeSceneToFile("res://screens/battle/battle_screen.tscn");
+        DungeonController.Instance.StartRun();
     }
 }

@@ -1,0 +1,128 @@
+[gd_scene load_steps=9 format=3 uid="uid://blpmgo67ohhhj"]
+
+[ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_6npk3"]
+[ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="2_uib46"]
+[ext_resource type="PackedScene" uid="uid://dnl88jx2acj4c" path="res://scenes/battle/ui/enemy_sprite.tscn" id="3_esxr1"]
+[ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="4_yk1v0"]
+[ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="5_do4qx"]
+[ext_resource type="Texture2D" uid="uid://c2pveg7gj1rrf" path="res://sprites/wall-dark.png" id="6_n1ffd"]
+[ext_resource type="PackedScene" uid="uid://bsvbouhlv423j" path="res://scenes/battle/ui/death_overlay.tscn" id="7_gwuxc"]
+[ext_resource type="PackedScene" uid="uid://dh8ocfmg7elyp" path="res://scenes/battle/battlefield.tscn" id="8_sqhgj"]
+
+[node name="DungeonScreen" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1280.0
+offset_top = -720.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/UI/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/VBoxContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="Camera2D/UI/VBoxContainer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dungeon" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.337255)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_6npk3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerMarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer" instance=ExtResource("2_uib46")]
+layout_mode = 2
+
+[node name="EnemyMarginContainer" parent="Camera2D/UI/VBoxContainer/Dungeon/MarginContainer/HBoxContainer" instance=ExtResource("3_esxr1")]
+layout_mode = 2
+
+[node name="HealthBarsBg" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.207843)
+z_index = 5
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+texture = ExtResource("1_6npk3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D/UI/VBoxContainer/HealthBarsBg"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerStats" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer" instance=ExtResource("4_yk1v0")]
+layout_mode = 2
+
+[node name="EnemyStats" parent="Camera2D/UI/VBoxContainer/HealthBarsBg/MarginContainer/HBoxContainer" instance=ExtResource("5_do4qx")]
+layout_mode = 2
+
+[node name="PlayingFieldBg" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1000)
+layout_mode = 2
+texture = ExtResource("6_n1ffd")
+stretch_mode = 1
+
+[node name="DeathOverlay" parent="Camera2D/UI" instance=ExtResource("7_gwuxc")]
+visible = false
+layout_mode = 1
+
+[node name="Battlefield" parent="." instance=ExtResource("8_sqhgj")]
+position = Vector2(0, 34)

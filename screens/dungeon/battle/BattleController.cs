@@ -7,6 +7,12 @@ public partial class BattleController : Node
     [Export]
     private ResourcePreloader CommonEnemyPreloader { get; set; }
 
+    [Signal]
+    public delegate void BattleStartEventHandler();
+
+    [Signal]
+    public delegate void BattleEndEventHandler();
+
     public static BattleController Instance { get; private set; }
 
     public override void _Ready()
@@ -16,8 +22,13 @@ public partial class BattleController : Node
             GD.PrintErr("Multiple instances of BattleController detected! This should not happen.");
         }
         
-        SpawnRandomCommonEnemy();
         Instance = this;
+        Start();
+    }
+
+    public void Start()
+    {
+        SpawnRandomCommonEnemy();
     }
 
     private void SpawnRandomCommonEnemy()
@@ -30,5 +41,19 @@ public partial class BattleController : Node
         AddChild(enemy);
 
         EnemyController = enemy;
+        EnemyController.ActorDeath += OnEnemyDeath;
     }
+
+    private void OnEnemyDeath()
+    {
+        // Hide enemy sprite and healthbar
+        // Enter looting mode
+        GD.Print("emenie dided");
+    }
+}
+
+public enum Mode
+{
+    Battle,
+    Looting
 }
