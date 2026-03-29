@@ -18,6 +18,7 @@ public partial class EnemyStats : ActorStats
 
         enemyController.ActorHit += HandleEnemyHit;
         enemyController.ActorCriticalHit += HandleEnemyHit;
+        enemyController.ActorDeath += HandleEnemyDeath;
     }
 
     private void HandleEnemyHit(float damage)
@@ -25,5 +26,10 @@ public partial class EnemyStats : ActorStats
         var enemyController = BattleController.Instance?.EnemyController;
         HealthBar.MaxValue = enemyController.MaxHealth;
         HealthBar.Value = enemyController.CurrentHealth;
+    }
+
+    private void HandleEnemyDeath()
+    {
+        Hide();
     }
 }

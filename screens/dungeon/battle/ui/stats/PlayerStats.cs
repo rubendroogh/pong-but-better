@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using Godot;
 
 public partial class PlayerStats : ActorStats
@@ -17,11 +18,17 @@ public partial class PlayerStats : ActorStats
         }
 
         playerController.ActorHit += HandlePlayerHealthChange;
+        playerController.ActorDeath += HandlePlayerDeath;
     }
 
     private void HandlePlayerHealthChange(float damage)
     {
         HealthBar.MaxValue = Player.Instance.MaxHealth;
         HealthBar.Value = Player.Instance.CurrentHealth;
+    }
+
+    private void HandlePlayerDeath()
+    {
+        Hide();
     }
 }
