@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class EnemyHealthBar : HealthBar
+public partial class EnemyStats : ActorStats
 {
     public override void _Ready()
     {
@@ -23,7 +23,7 @@ public partial class EnemyHealthBar : HealthBar
     private void HandleEnemyHit(float damage)
     {
         var enemyController = BattleController.Instance?.EnemyController;
-        MaxValue = enemyController.MaxHealth;
-        Value = enemyController.CurrentHealth;
+        HealthBar.MaxValue = enemyController.MaxHealth;
+        HealthBar.Value = enemyController.CurrentHealth;
     }
 }

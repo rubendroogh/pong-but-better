@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PlayerHealthBar : HealthBar
+public partial class PlayerStats : ActorStats
 {
     public override void _Ready()
     {
@@ -21,7 +21,7 @@ public partial class PlayerHealthBar : HealthBar
 
     private void HandlePlayerHealthChange(float damage)
     {
-        MaxValue = Player.Instance.MaxHealth;
-        Value = Player.Instance.CurrentHealth;
+        HealthBar.MaxValue = Player.Instance.MaxHealth;
+        HealthBar.Value = Player.Instance.CurrentHealth;
     }
 }

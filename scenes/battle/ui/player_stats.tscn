@@ -1,17 +1,18 @@
 [gd_scene load_steps=2 format=3 uid="uid://coc5ffvh7wk4n"]
 
-[ext_resource type="Script" uid="uid://dym8opj7vxmsl" path="res://screens/dungeon/battle/ui/stats/PlayerHealthBar.cs" id="1_c7afj"]
+[ext_resource type="Script" uid="uid://dym8opj7vxmsl" path="res://screens/dungeon/battle/ui/stats/PlayerStats.cs" id="1_c7afj"]
 
-[node name="PlayerStats" type="VBoxContainer"]
+[node name="PlayerStats" type="VBoxContainer" node_paths=PackedStringArray("HealthBar")]
 custom_minimum_size = Vector2(200, 0)
 size_flags_horizontal = 2
+script = ExtResource("1_c7afj")
+HealthBar = NodePath("ProgressBar")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 value = 100.0
-script = ExtResource("1_c7afj")
 
 [node name="Label" type="Label" parent="."]
 z_index = 1
