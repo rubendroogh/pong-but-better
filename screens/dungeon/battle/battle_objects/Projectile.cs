@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using Godot;
 
 public partial class Projectile : CharacterBody2D
 {
+    public List<Modifier> Modifiers { get; set; } = [];
+
+    public int Damage { get; set; } = 10;
+
     [Export]
     private Vector2 StartingVelocity = new Vector2(500, 0);
-
-    private const int DEFAULT_DAMAGE = 10;
 
     public void Start(Vector2 velocity = default)
     {
@@ -29,18 +32,27 @@ public partial class Projectile : CharacterBody2D
         var collider = collisionInfo.GetCollider() as PhysicsBody2D;
         if (collider is HitBox targetHitbox)
         {
-            targetHitbox.ApplyHit(DEFAULT_DAMAGE);
-            QueueFree();
-            return;
+            var shouldDestroy = targetHitbox.ApplyHit(this);
+            if (shouldDestroy)
+            {
+                QueueFree();
+                return;
+            }
         }
         else if (collider is Projectile otherProjectile)
         {
             SpawnPuff();
             otherProjectile.QueueFree();
             QueueFree();
+            return;
         }
 
         Velocity = Velocity.Bounce(collisionInfo.GetNormal());
+    }
+
+    public void AddModifier(Modifier modifier)
+    {
+        Modifiers.Add(modifier);
     }
 
     // Spawns a puff of smoke
@@ -50,4 +62,9 @@ public partial class Projectile : CharacterBody2D
         puff.Position = Position;
         AddSibling(puff);
     }
+}
+
+public enum Modifier
+{
+    Explosive, // Explosive projectiles deal damage when hitting armour
 }

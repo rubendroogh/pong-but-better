@@ -80,7 +80,7 @@ public partial class Claw : ActorOwned
     private void ShootProjectile()
     {
         var projectileInstance = ProjectileScene.Instantiate<Projectile>();
-        projectileInstance.Start(new Vector2(-500, 0)); // Shoot left if flipped, right otherwise
+        projectileInstance.Start(new Vector2(-1_000, 0)); // Shoot left if flipped, right otherwise
         ProjectileSpawnPoint.AddChild(projectileInstance);
         projectileInstance.Position = Vector2.Zero; // Spawn at the spawn point's position
     }
