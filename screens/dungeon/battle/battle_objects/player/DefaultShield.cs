@@ -28,5 +28,9 @@ public partial class DefaultShield : Shield
 		{
 			projectile.AddModifier(Modifier.Explosive);
 		}
+		else
+		{
+			await base.Hit(projectile);
+		}
 	}
 }

@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Threading.Tasks;
 
 public partial class Shield : CharacterBody2D
@@ -11,6 +12,11 @@ public partial class Shield : CharacterBody2D
 
     [Export]
     public int UltimateCooldownSeconds { get; set; } = 60;
+
+    [Signal]
+    public delegate void ShieldChargeChangeEventHandler();
+
+    public int ShieldCharge = 0;
 
 	public override void _PhysicsProcess(double delta)
 	{
@@ -45,6 +51,7 @@ public partial class Shield : CharacterBody2D
     /// </summary>
     public async virtual Task Hit(Projectile projectile)
     {
-        
+        ShieldCharge += 1;
+        EmitSignal(SignalName.ShieldChargeChange);
     }
 }

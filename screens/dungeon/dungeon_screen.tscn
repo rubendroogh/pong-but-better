@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://blpmgo67ohhhj"]
+[gd_scene load_steps=11 format=3 uid="uid://blpmgo67ohhhj"]
 
 [ext_resource type="Texture2D" uid="uid://pdi5mhlgyvnv" path="res://sprites/black.png" id="1_6npk3"]
 [ext_resource type="Script" uid="uid://cf1sw1bcoh5q3" path="res://screens/dungeon/battle/ui/stats/PlayerMoney.cs" id="1_uib46"]
+[ext_resource type="Script" uid="uid://dno2ourryx4id" path="res://screens/dungeon/battle/ui/stats/PlayerShieldCharge.cs" id="2_esxr1"]
 [ext_resource type="PackedScene" uid="uid://q1afkd1pn11l" path="res://scenes/battle/ui/player_sprite.tscn" id="2_uib46"]
 [ext_resource type="PackedScene" uid="uid://dnl88jx2acj4c" path="res://scenes/battle/ui/enemy_sprite.tscn" id="3_esxr1"]
 [ext_resource type="PackedScene" uid="uid://coc5ffvh7wk4n" path="res://scenes/battle/ui/player_stats.tscn" id="4_yk1v0"]
 [ext_resource type="PackedScene" uid="uid://b0yuejrierdnf" path="res://scenes/battle/ui/enemy_stats.tscn" id="5_do4qx"]
-[ext_resource type="Texture2D" uid="uid://c2pveg7gj1rrf" path="res://sprites/wall-dark.png" id="6_n1ffd"]
 [ext_resource type="PackedScene" uid="uid://bsvbouhlv423j" path="res://scenes/battle/ui/death_overlay.tscn" id="7_gwuxc"]
+[ext_resource type="Texture2D" uid="uid://vwernuck3884" path="res://sprites/wall-big.png" id="7_uib46"]
 [ext_resource type="PackedScene" uid="uid://dh8ocfmg7elyp" path="res://scenes/battle/battlefield.tscn" id="8_sqhgj"]
 
 [node name="DungeonScreen" type="Node2D"]
@@ -62,6 +63,15 @@ text = "Money: 999"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_uib46")
+
+[node name="Label" type="Label" parent="Camera2D/UI/VBoxContainer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "| Shield special: Spacebar | Shield Ultimate: F"
+
+[node name="UltChargeLabel" type="Label" parent="Camera2D/UI/VBoxContainer/TextureRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "| Shield Ultimate Charge: 0/100"
+script = ExtResource("2_esxr1")
 
 [node name="Dungeon" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.337255)
@@ -119,7 +129,7 @@ layout_mode = 2
 [node name="PlayingFieldBg" type="TextureRect" parent="Camera2D/UI/VBoxContainer"]
 custom_minimum_size = Vector2(0, 1000)
 layout_mode = 2
-texture = ExtResource("6_n1ffd")
+texture = ExtResource("7_uib46")
 stretch_mode = 1
 
 [node name="DeathOverlay" parent="Camera2D/UI" instance=ExtResource("7_gwuxc")]
