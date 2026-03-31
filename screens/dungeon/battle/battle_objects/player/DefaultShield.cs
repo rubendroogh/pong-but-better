@@ -1,21 +1,29 @@
 using Godot;
-using System;
+using System.Threading.Tasks;
 
 public partial class DefaultShield : Shield
 {
-	public override void _PhysicsProcess(double delta)
-	{
-		var velocity = Input.GetVector("secondary_left", "secondary_right", "secondary_up", "secondary_down");
-		MoveAndCollide(velocity * Speed * (float)delta);
-	}
+	private bool UltimateActive { get; set; }
 
-    public override void Special()
+    public async override Task Special()
     {
         // Wave
     }
 
-    public override void Ultimate()
+    public async override Task Ultimate()
     {
         // Explosive projectiles
+		UltimateActive = true;
+		Modulate = Colors.IndianRed;
+		
+		await this.Delay(5_000);
+
+		UltimateActive = false;
+		Modulate = Colors.White;
     }
+
+	public async override Task Hit(Projectile projectile)
+	{
+		projectile.AddModifier(Modifier.Explosive);
+	}
 }

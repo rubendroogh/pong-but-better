@@ -6,6 +6,8 @@ public partial class Player : Actor
 
     public int Money { get; private set; }
 
+    public Shield Shield { get; set; } = new DefaultShield();
+
     [Signal]
     public delegate void PlayerDeathEventHandler();
 
@@ -16,6 +18,9 @@ public partial class Player : Actor
     {
         ActorID = 0;
         Instance = this;
+
+        // TODO: Spawn shield to keep state
+
         base._Ready();
     }
 

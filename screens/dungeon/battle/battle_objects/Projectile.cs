@@ -39,6 +39,10 @@ public partial class Projectile : CharacterBody2D
                 return;
             }
         }
+        else if (collider is Shield shield)
+        {
+            _ = shield.Hit(this);
+        }
         else if (collider is Projectile otherProjectile)
         {
             SpawnPuff();
