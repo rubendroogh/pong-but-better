@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dh8ocfmg7elyp"]
 
 [ext_resource type="Script" uid="uid://diu1hc623ites" path="res://screens/dungeon/battle/BattleController.cs" id="1_c8ews"]
-[ext_resource type="PackedScene" uid="uid://dsmqbgrtljds" path="res://scenes/battle/actors/player/default_shield.tscn" id="2_3cmhl"]
+[ext_resource type="PackedScene" uid="uid://dsmqbgrtljds" path="res://scenes/battle/battle_objects/player/default_shield.tscn" id="2_3cmhl"]
 [ext_resource type="Script" uid="uid://bs67ln8yqp3n7" path="res://screens/dungeon/battle/hitboxes/PlayerHitBox.cs" id="3_14yoq"]
 [ext_resource type="Texture2D" uid="uid://chyfdnjs3firi" path="res://sprites/gradient.png" id="4_ynl3h"]
 [ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/dungeon/battle/hitboxes/EnemyHitBox.cs" id="5_3cmhl"]
@@ -78,3 +78,5 @@ shape = SubResource("RectangleShape2D_ujstw")
 
 [node name="CommonEnemyPreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("crab_full"), [ExtResource("6_3o6bd")]]
+
+[node name="Node" type="Node" parent="."]

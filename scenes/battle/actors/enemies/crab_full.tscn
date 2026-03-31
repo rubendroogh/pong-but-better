@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://bddrkn3h8q0vm"]
 
 [ext_resource type="Script" uid="uid://ch0epjc3kw8ns" path="res://screens/dungeon/battle/actors/enemies/crab/Crab.cs" id="1_v15q2"]
-[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/actors/enemies/crab/claw_top.tscn" id="2_r1smk"]
+[ext_resource type="PackedScene" uid="uid://d4dr2vhk2ibj" path="res://scenes/battle/battle_objects/crab/claw_top.tscn" id="2_r1smk"]
 [ext_resource type="PackedScene" uid="uid://m0a7grcurxa7" path="res://scenes/battle/projectile.tscn" id="3_y11o2"]
-[ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/actors/enemies/crab/claw_bottom.tscn" id="4_ayq6q"]
+[ext_resource type="PackedScene" uid="uid://c1lcfm73pyyfe" path="res://scenes/battle/battle_objects/crab/claw_bottom.tscn" id="4_ayq6q"]
 [ext_resource type="Script" uid="uid://b33f7vx1klwv1" path="res://screens/dungeon/battle/hitboxes/EnemyHitBox.cs" id="4_r1smk"]
-[ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/actors/enemies/crab/crab_head.tscn" id="5_nywnr"]
-[ext_resource type="PackedScene" uid="uid://c3lct85iikme1" path="res://scenes/battle/actors/enemies/crab/crab_shield.tscn" id="6_bk6ou"]
+[ext_resource type="PackedScene" uid="uid://dn2g7aqy8uksn" path="res://scenes/battle/battle_objects/crab/crab_head.tscn" id="5_nywnr"]
+[ext_resource type="PackedScene" uid="uid://c3lct85iikme1" path="res://scenes/battle/battle_objects/crab/crab_shield.tscn" id="6_bk6ou"]
 
 [node name="Crab" type="Node2D"]
 script = ExtResource("1_v15q2")
