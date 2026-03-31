@@ -24,6 +24,9 @@ public partial class DefaultShield : Shield
 
 	public async override Task Hit(Projectile projectile)
 	{
-		projectile.AddModifier(Modifier.Explosive);
+		if (UltimateActive)
+		{
+			projectile.AddModifier(Modifier.Explosive);
+		}
 	}
 }
