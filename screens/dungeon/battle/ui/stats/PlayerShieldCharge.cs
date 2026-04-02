@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerShieldCharge : Label
 {
-    private string Template = "| Shield Ultimate Charge: {0}/10";
+    private string Template = "| Shield Ultimate Charge: {0}/{1}";
 
     public override void _Ready()
     {
@@ -18,6 +18,6 @@ public partial class PlayerShieldCharge : Label
 
     private void HandleShieldChargeChange()
     {
-        Text = string.Format(Template, Player.Instance.Shield.ShieldCharge);
+        Text = string.Format(Template, Player.Instance.Shield.ShieldCharge, Player.Instance.Shield.MaxShieldCharge);
     }
 }

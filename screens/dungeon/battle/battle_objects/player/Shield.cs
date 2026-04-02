@@ -18,6 +18,8 @@ public partial class Shield : CharacterBody2D
 
     public int ShieldCharge = 0;
 
+    public int MaxShieldCharge = 10;
+
 	public override void _PhysicsProcess(double delta)
 	{
 		var velocity = Input.GetVector("secondary_left", "secondary_right", "secondary_up", "secondary_down");

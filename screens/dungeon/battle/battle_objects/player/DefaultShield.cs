@@ -12,6 +12,11 @@ public partial class DefaultShield : Shield
 
     public async override Task Ultimate()
     {
+		if (ShieldCharge < MaxShieldCharge)
+		{
+			return;
+		}
+
         // Explosive projectiles
 		UltimateActive = true;
 		Modulate = Colors.IndianRed;
