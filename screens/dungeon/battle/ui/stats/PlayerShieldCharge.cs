@@ -7,7 +7,7 @@ public partial class PlayerShieldCharge : Label
 
     public override void _Ready()
     {
-        Text = string.Format(Template, Player.Instance.Shield.ShieldCharge);
+        CallDeferred(nameof(HandleShieldChargeChange));
         CallDeferred(nameof(ConnectSignals));
     }
 

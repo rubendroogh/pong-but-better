@@ -6,13 +6,20 @@ public partial class Player : Actor
 
     public int Money { get; private set; }
 
-    public Shield Shield { get; set; } = new DefaultShield();
+    // The shield instance in battle.
+    public Shield Shield { get; private set; }
 
     [Signal]
     public delegate void PlayerDeathEventHandler();
 
     [Signal]
     public delegate void MoneyChangedEventHandler();
+
+    [Export]
+    private ResourcePreloader ShieldsPreloader { get; set; }
+
+    [Export]
+    private string ShieldKey { get; set; }
 
     public override void _Ready()
     {
@@ -42,9 +49,26 @@ public partial class Player : Actor
         EmitSignal(SignalName.MoneyChanged);
     }
 
+    public PackedScene GetShieldScene()
+    {
+        var shieldScene = ShieldsPreloader.GetResource(ShieldKey) as PackedScene;
+        if (shieldScene == null)
+        {
+            GD.PrintErr("Shield scene not found!");
+        }
+
+        return shieldScene;
+    }
+
+    public void SetShield(Shield shield)
+    {
+        Shield = shield;
+    }
+
     private void Die()
     {
         // Do animation
         EmitSignal(SignalName.PlayerDeath);
     }
 }
+

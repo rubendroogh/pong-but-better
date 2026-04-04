@@ -15,6 +15,9 @@ public partial class BattleController : Node
 
     public static BattleController Instance { get; private set; }
 
+    [Export]
+    private Node2D PlayerShieldSpawn { get; set; }
+
     public override void _Ready()
     {
         if (Instance != null)
@@ -28,7 +31,18 @@ public partial class BattleController : Node
 
     public void Start()
     {
+        SpawnPlayerObjects();
         SpawnRandomCommonEnemy();
+    }
+
+    private void SpawnPlayerObjects()
+    {
+        var shieldScene = Player.Instance.GetShieldScene();
+        var shield = shieldScene.Instantiate<Shield>();
+
+        Player.Instance.SetShield(shield);
+        PlayerShieldSpawn.AddSibling(shield);
+        shield.Position = PlayerShieldSpawn.Position;
     }
 
     private void SpawnRandomCommonEnemy()

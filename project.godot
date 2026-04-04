@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerController="*res://screens/dungeon/battle/actors/Player.cs"
 CommonScenes="*res://scenes/common_scenes.tscn"
 DungeonController="*res://screens/dungeon/DungeonController.cs"
+Player="*res://scenes/battle/actors/player/player.tscn"
 
 [display]
 

@@ -8,6 +8,7 @@ public partial class DefaultShield : Shield
     public async override Task Special()
     {
         // Wave
+		// Start animation
     }
 
     public async override Task Ultimate()

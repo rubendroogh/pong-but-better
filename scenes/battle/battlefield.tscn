@@ -14,14 +14,16 @@ size = Vector2(32.5, 781)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujstw"]
 size = Vector2(2559, 89)
 
-[node name="Battlefield" type="Node2D" node_paths=PackedStringArray("CommonEnemyPreloader")]
+[node name="Battlefield" type="Node2D" node_paths=PackedStringArray("CommonEnemyPreloader", "PlayerShieldSpawn")]
 script = ExtResource("1_c8ews")
 CommonEnemyPreloader = NodePath("CommonEnemyPreloader")
+PlayerShieldSpawn = NodePath("ShieldSpawn")
 
 [node name="ShieldSpawn" type="Node2D" parent="."]
 position = Vector2(-848, 225)
 
 [node name="Secondary" parent="." instance=ExtResource("2_3cmhl")]
+visible = false
 position = Vector2(-1000, 193)
 
 [node name="Left" type="StaticBody2D" parent="."]
@@ -78,5 +80,3 @@ shape = SubResource("RectangleShape2D_ujstw")
 
 [node name="CommonEnemyPreloader" type="ResourcePreloader" parent="."]
 resources = [PackedStringArray("crab_full"), [ExtResource("6_3o6bd")]]
-
-[node name="Node" type="Node" parent="."]

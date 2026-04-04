@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://femp3vxnqwcd"]
+
+[ext_resource type="Script" uid="uid://dgo8pbvd44ggs" path="res://screens/dungeon/battle/actors/Player.cs" id="1_0i5mt"]
+[ext_resource type="PackedScene" uid="uid://dsmqbgrtljds" path="res://scenes/battle/battle_objects/player/default_shield.tscn" id="2_0g6gc"]
+
+[node name="Player" type="Node" node_paths=PackedStringArray("ShieldsPreloader")]
+script = ExtResource("1_0i5mt")
+ShieldsPreloader = NodePath("ShieldsPreloader")
+ShieldKey = "default_shield"
+
+[node name="ShieldsPreloader" type="ResourcePreloader" parent="."]
+resources = [PackedStringArray("default_shield"), [ExtResource("2_0g6gc")]]
